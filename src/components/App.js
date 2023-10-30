@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import '../../src/index.css';
+import Main from './Main/Main';
+import { useState } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import Header from './Header/Header';
+import Movies from './Movies/Movies';
+import SavedMovies from './SavedMovies/SavedMovies';
+import Footer from './Footer/Footer';
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = useState(true);
+  const location = useLocation().pathname;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div className='page'>
+
+      {(location === '/' ||
+        location === '/movies' ||
+        location === '/profile' ||
+        location === '/saved-movies') && <Header loggedIn={loggedIn} />}
+      <main>
+        <Routes>
+
+          <Route path='/' element={<Main />} />
+          <Route path='/movies' element={<Movies />} />
+          <Route path='/saved-movies' element={<SavedMovies />} />
+
+        </Routes>
+      </main>
+      {(location === '/' ||
+        location === '/movies' ||
+        location === '/profile' ||
+        location === '/saved-movies') && <Footer />}
     </div>
-  );
+  )
 }
 
 export default App;

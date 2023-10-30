@@ -1,0 +1,57 @@
+.addFilmsButton {
+    background-color: #202020;
+    display: flex;
+    justify-content: center;
+}
+
+.addFilmsButton__area {
+    max-width: 1140px;
+    width: 100%;
+    display: flex;
+    margin: 0 70px;
+    margin-bottom: 80px;
+    justify-content: center;
+}
+
+@media screen and (max-width: 960px) {
+
+    .addFilmsButton__area {
+        max-width: 708px;
+        margin: 0 30px;
+               
+    }
+}
+
+@media screen and (max-width: 568px) {
+
+    .addFilmsButton__area {
+        min-width: 300px;
+        margin: 0 10px;
+               
+    }
+}
+
+.page__addFilmsButton {
+    margin-top: 50px;
+}
+
+
+
+.addFilmsButton__area-button {
+    background-color: #2F2F2F;
+    display: flex;
+    width: 100%;
+    padding: 0;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+}
+

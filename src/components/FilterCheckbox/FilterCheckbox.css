@@ -1,0 +1,113 @@
+.checkbox {
+    display: flex;
+    max-width: 1140px;
+    margin: 0 70px;
+    border-bottom: 1px solid #AAA;
+}
+
+@media screen and (max-width: 960px) {
+
+    .checkbox {
+        max-width: 708px;
+        margin: 0 30px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+
+    .checkbox {
+        max-width: 292px;
+        margin: 0 14px;
+    }
+}
+
+.checkbox__switch {
+    position: relative;
+    width: 36px;
+    height: 20px;
+
+}
+
+.checkbox__switch-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.checkbox__switch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.checkbox__switch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.checkbox__switch-inner:before,
+.checkbox__switch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 20px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.checkbox__switch-inner::before {
+    content: "";
+    padding-left: 10px;
+    background-color: rgba(61, 220, 132, 1);
+    color: #FFFFFF;
+}
+
+.checkbox__switch-inner::after {
+    content: "";
+    padding-right: 10px;
+    background-color: rgba(52, 52, 52, 1);
+    color: rgba(160, 160, 160, 1);
+    
+}
+
+.checkbox__switch-switch {
+    display: block;
+    width: 10px;
+    margin: 5px;
+    background: rgba(160, 160, 160, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease-in 0s;
+}
+
+.checkbox__switch-checkbox:checked+.checkbox__switch-label .checkbox__switch-inner {
+    margin-left: 0;
+}
+
+.checkbox__switch-checkbox:checked+.checkbox__switch-label .checkbox__switch-switch {
+    right: 0px;
+    background-color: #F0F4F5;
+}
+
+.checkbox__title {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    margin-left: 14px;
+    margin-bottom: 44px;
+
+    
+}
+
+.checkbox__title-text {
+    margin: 0;
+}

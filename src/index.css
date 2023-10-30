@@ -1,13 +1,58 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
+
+.page {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.page__about-project {
+  margin-top: 110px;
+}
+
+@media screen and (max-width: 1160px) {
+    
+  .page__about-project {
+    margin-top: 90px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+    
+  .page__about-project {
+    margin-top: 70px;
+  }
+}
+
+.page__techs {
+  margin-top: 100px;
+  margin-bottom: 90px;
+}
+
+@media screen and (max-width: 1160px) {
+    
+  .page__techs {
+    margin-top: 90px;
+    margin-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+    
+  .page__techs {
+    margin-top: 70px;
+    margin-bottom: 60px;
+  }
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* { outline: 1px solid yellow; }
