@@ -21,8 +21,7 @@ function MoviesCardList() {
                 <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
                 <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
                 <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
+                
             </div>
         </section>
     )
