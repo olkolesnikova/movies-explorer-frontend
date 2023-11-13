@@ -2,12 +2,27 @@ import headerLogo from '../../images/logo-header.svg';
 import headerAccountLink from '../../images/account-icon.png';
 import './Header.css';
 import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import Menu from '../Menu/Menu';
+import { useMenuClose } from '../hooks/useMenuClose';
 
 const Header = ({ loggedIn }) => {
 
-
     const location = useLocation().pathname;
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    function toggleMenu() {
+        setIsMenuOpen(!isMenuOpen);
+    }
+
+    function closeMenu() {
+        setIsMenuOpen(false)
+
+    }
+
+    useMenuClose(isMenuOpen, closeMenu);
+      
+    
     return (
         <header className={(location === '/movies' ||
             location === '/profile' ||
@@ -32,15 +47,16 @@ const Header = ({ loggedIn }) => {
                     <div className='header__profile-link'>
                         <Link to='/profile' className='header__account-link'>Аккаунт</Link>
                         <button type="button" className={(location === '/movies' ||
-            location === '/profile' ||
-            location === '/saved-movies') ? 'header__account-button header__account-button_type_black' : 'header__account-button'}>
+                            location === '/profile' ||
+                            location === '/saved-movies') ? 'header__account-button header__account-button_type_black' : 'header__account-button'}>
                             <img type='button' alt="" src={headerAccountLink} className="header__account-icon" />
                         </button>
                     </div>
                 </div>
 
-                    <button type='button' className='header__burger-button'></button></>
+                    <button type='button' className='header__burger' onClick={toggleMenu}></button></>
             )}
+            <Menu isOpen={isMenuOpen} onClose={closeMenu}></Menu>
         </header>
     )
 }

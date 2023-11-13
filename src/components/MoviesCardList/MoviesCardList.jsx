@@ -12,7 +12,7 @@ function MoviesCardList() {
         <section className='moviesCardList'>
             <div className='moviesCardList__elements page__moviesCardList'>
                 <MoviesCard cardImage={moviesCardImage}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond} isSaved={setIsSaved}></MoviesCard>
+                <MoviesCard cardImage={moviesCardImageSecond} isSaved={isSaved}></MoviesCard>
                 <MoviesCard cardImage={moviesCardImageSecond} isSaved={isSaved}></MoviesCard>
                 <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
                 <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
