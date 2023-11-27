@@ -20,7 +20,7 @@
     border: none;
     display: flex;
     flex-direction: column;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 
 }
 
@@ -67,7 +67,7 @@
 }
 
 .loginForm__button {
-    margin-top: 221px;
+    margin-top: 215px;
     height: 45px;
     border-radius: 3px;
     background: #4285F4;
@@ -81,8 +81,12 @@
     padding: 0;
 }
 
+.loginForm__button:hover {
+    opacity: .7;
+}
+
 .loginForm__button_type_register {
-    margin-top: 152px;
+    margin-top: 145px;
 }
 
 .loginForm__button_type_disabled {
@@ -95,7 +99,7 @@
 @media screen and (max-width: 568px) {
 
     .loginForm__button {
-        margin-top: 309px;
+        margin-top: 230px;
         margin-bottom: 14px;
     }
 }

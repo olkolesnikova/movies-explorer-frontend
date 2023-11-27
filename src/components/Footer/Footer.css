@@ -1,15 +1,16 @@
 .footer {
-    width: 100%;
+    
     background-color: #202020;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     
 }
 
 .footer__description {
-    margin-left: 70px;
-    margin-right: 70px;
+    max-width: 1140px;
+    margin: 0 70px;
+    background-color: #202020;
     text-align: center;
-    padding-top: 79px;
+    padding-top: 60px;
     padding-bottom: 20px;
     border-bottom: 1px solid #424242;
     color: #8B8B8B;
@@ -22,44 +23,38 @@
     margin-bottom: 20px;
 }
 
-@media screen and (max-width: 1160px) {
-
-    .footer__description {
-        margin-left: 50px;
-        margin-right: 50px;
-    }
-}
-
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .footer__description {
         max-width: 300px;
         padding-bottom: 21px;
         margin: 0 auto;
+        padding-top: 55px;
+        font-size: 12px;
     }
 }
 
 .footer__content {
-    position: relative;
     display: flex;
     justify-content: space-between;
-    margin-left: 70px;
-    margin-right: 70px;
+    max-width: 1140px;
+    margin: 0 70px;
     padding-bottom: 20px;
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 960px) {
 
     .footer__content {
-        margin-left: 50px;
-        margin-right: 50px;
+        
+        margin: 0 30px;
+        
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .footer__content {
-        flex-direction: column;
+        flex-direction: column-reverse;
         padding-bottom: 0;
         margin-left: 14px;
         margin-right: 14px;
@@ -77,15 +72,15 @@
     line-height: normal;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .footer__copyright {
         color: #8B8B8B;
-        position: absolute;
-        top: 102px;
-        left: 120px;
+        font-size: 12px;
         background-color: #202020;
-
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
     }
 }
 
@@ -98,13 +93,16 @@
     
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .footer__items {
         flex-direction: column;
         margin-top: 30px;
         gap: 12px;
-        padding-bottom: 65px;
+        padding-bottom: 25px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
     }
 }
 
@@ -117,11 +115,13 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-decoration: none;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .footer__items-title {
         text-align: center;
+        font-size: 12px;
     }
 }

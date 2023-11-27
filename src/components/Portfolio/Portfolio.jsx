@@ -1,4 +1,5 @@
 import './Portfolio.css';
+import arrowImage from '../../images/link-arrow.svg';
 
 function Portfolio() {
 
@@ -7,16 +8,29 @@ function Portfolio() {
             <h2 className='portfolio__title'>Портфолио</h2>
             <ul className='portfolio__list'>
                 <li className='portfolio__item'>
-                    <p className='portfolio__item-title'>Статичный сайт</p>
-                    <a href="github" className='portfolio__item-link'>&#8599;</a>
+                    <a href="https://github.com/olkolesnikova/how-to-learn" className='portfolio__item-title' target='blank'>
+                        <div>Статичный сайт</div>
+                        <div className='portfolio__item-link'>
+                            <img src={arrowImage} className='portfolio__item-link-image' alt="" />
+                        </div>
+                    </a>
                 </li>
                 <li className='portfolio__item'>
-                    <p className='portfolio__item-title'>Адаптивный сайт</p>
-                    <a href="github" className='portfolio__item-link'>&#8599;</a>
+                    <a href="https://github.com/olkolesnikova/russian-travel" className='portfolio__item-title' target='blank'>
+                        <div>Адаптивный сайт</div>
+                        <div className='portfolio__item-link'>
+                            <img src={arrowImage} className='portfolio__item-link-image' alt="" />
+                        </div>
+                    </a>
                 </li>
                 <li className='portfolio__item'>
-                    <p className='portfolio__item-title'>Одностраничное приложение</p>
-                    <a href="github" className='portfolio__item-link'>&#8599;</a>
+                    <a href="https://github.com/olkolesnikova/react-mesto-auth" className='portfolio__item-title' target='blank'>
+                        <div>Одностраничное приложение</div>
+                        <div className='portfolio__item-link'>
+                            <img src={arrowImage} className='portfolio__item-link-image' alt="" />
+                        </div>
+                    </a>
+
                 </li>
             </ul>
         </section>

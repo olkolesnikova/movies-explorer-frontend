@@ -5,53 +5,18 @@
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  
 }
 
-.page__about-project {
-  margin-top: 110px;
-}
-
-@media screen and (max-width: 1160px) {
-    
-  .page__about-project {
-    margin-top: 90px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-    
-  .page__about-project {
-    margin-top: 70px;
-  }
-}
-
-.page__techs {
-  margin-top: 100px;
-  margin-bottom: 90px;
-}
-
-@media screen and (max-width: 1160px) {
-    
-  .page__techs {
-    margin-top: 90px;
-    margin-bottom: 80px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-    
-  .page__techs {
-    margin-top: 70px;
-    margin-bottom: 60px;
-  }
-}
+* { outline: 1px solid yellow; }
 
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-

@@ -1,5 +1,5 @@
 import headerLogo from '../../images/logo-header.svg';
-import headerAccountLink from '../../images/account-icon.png';
+import headerAccountLink from '../../images/account-icon-svg.svg';
 import './Header.css';
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
@@ -24,7 +24,7 @@ const Header = ({ loggedIn }) => {
       
     
     return (
-        <header className={(location === '/movies' ||
+        <><header className={(location === '/movies' ||
             location === '/profile' ||
             location === '/saved-movies') ? 'header header_type_black' : 'header'}>
 
@@ -33,31 +33,32 @@ const Header = ({ loggedIn }) => {
             </Link>
 
             {!loggedIn && (
-                <div className='header__links'>
+                <nav className='header__links'>
                     <Link to='/signup' className='header__registration-link'>Регистрация</Link>
-                    <Link to='/signin'>
-                        <button type='button' className='header__entry-link'>Войти</button>
+                    <Link to='/signin' className='header__entry-link'>
+                        Войти
                     </Link>
-                </div>
+                </nav>
             )}
             {loggedIn && (
-                <><div className='header__nav-links'>
+                <><nav className='header__nav-links'>
                     <Link to='/movies' className='header__films-link'>Фильмы</Link>
                     <Link to='/saved-movies' className='header__films-link'>Сохраненные фильмы</Link>
                     <div className='header__profile-link'>
-                        <Link to='/profile' className='header__account-link'>Аккаунт</Link>
-                        <button type="button" className={(location === '/movies' ||
+                        <a href="/profile" className='header__account-link'>Аккаунт</a>
+                        <a href="/profile" className={(location === '/movies' ||
                             location === '/profile' ||
                             location === '/saved-movies') ? 'header__account-button header__account-button_type_black' : 'header__account-button'}>
-                            <img type='button' alt="" src={headerAccountLink} className="header__account-icon" />
-                        </button>
+                            <img alt="Иконка кнопки аккаунта" src={headerAccountLink} className="header__account-icon" />
+                        </a>
                     </div>
-                </div>
+                </nav>
 
                     <button type='button' className='header__burger' onClick={toggleMenu}></button></>
             )}
-            <Menu isOpen={isMenuOpen} onClose={closeMenu}></Menu>
+
         </header>
+        <Menu isOpen={isMenuOpen} onClose={closeMenu}></Menu></>
     )
 }
 

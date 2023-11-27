@@ -8,7 +8,7 @@ export function useMenuClose(isMenuOpen, closeMenu) {
 
         const handleOverlay = (event) => {
 
-            if (event.target.classList.contains("popup_opened")) {
+            if (event.target.classList.contains("menu_open")) {
                 closeMenu();
             }
         };

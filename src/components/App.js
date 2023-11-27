@@ -11,6 +11,7 @@ import Register from './Register/Register';
 import Footer from './Footer/Footer';
 import PageNotFound from './PageNotFound/PageNotFound';
 
+
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(true);
@@ -24,7 +25,7 @@ function App() {
         location === '/movies' ||
         location === '/profile' ||
         location === '/saved-movies') && <Header loggedIn={loggedIn} />}
-      <main>
+      
         <Routes>
 
           <Route path='/' element={<Main />} />
@@ -36,11 +37,12 @@ function App() {
           <Route path='*' element={<PageNotFound />} />
         </Routes>
         
-      </main>
+      
       {(location === '/' ||
         location === '/movies' ||
         location === '/saved-movies') && <Footer />}
     </div>
+    
   )
 }
 

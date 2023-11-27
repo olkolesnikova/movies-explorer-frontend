@@ -6,11 +6,12 @@ function LoginForm({ isDisabled = false }) {
     const { values, handleChange, errors, isValid } = useFormWithValidation();
 
     return (
-        
+
         <form className="loginForm">
             <div className='loginForm__input'>
                 <label htmlFor="loginForm-email" className='loginForm__input-title'>E-mail</label>
                 <input id='loginForm-email' type="email" name="email" className='loginForm__input-value'
+                    placeholder='E-mail'
                     minLength={2}
                     maxLength={30}
                     required
@@ -25,7 +26,10 @@ function LoginForm({ isDisabled = false }) {
             <div className='loginForm__input'>
                 <label htmlFor="loginForm-password" className='loginForm__input-title'>Пароль</label>
                 <input id='loginForm-password' type="password" name="password" className='loginForm__input-value'
+                    placeholder='Пароль'
                     required
+                    minLength={2}
+                    maxLength={8}
                     value={values.password || ""}
                     onChange={handleChange}
                 />
@@ -33,8 +37,8 @@ function LoginForm({ isDisabled = false }) {
                     {errors.password || ""}
                 </span>
             </div>
-            <button type="submit" disabled={isDisabled} 
-            className={isValid ? 'loginForm__button' : 'loginForm__button loginForm__button_type_disabled'}>Войти</button>          
+            <button type="submit" disabled={isDisabled}
+                className={isValid ? 'loginForm__button' : 'loginForm__button loginForm__button_type_disabled'}>Войти</button>
 
         </form>
     )

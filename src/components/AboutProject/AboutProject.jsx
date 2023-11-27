@@ -4,8 +4,8 @@ import '../../index.css';
 function AboutProject() {
 
     return (
-        <section className='about-project'>
-            <div className='about-project__header page__about-project'>
+        <section className='about-project page__about-project'>
+            <div className='about-project__header'>
                 <h2 id='about-project' className='about-project__title'>О проекте</h2>
             </div>
             <div className='about-project__info'>

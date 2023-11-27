@@ -10,8 +10,15 @@
     width: 396px;
     margin: 0 auto;
     margin-top: 70px;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
     display: flex;
+}
+
+@media screen and (max-width: 960px) {
+
+    .login__icon {
+        margin-top: 0;
+    }
 }
 
 @media screen and (max-width: 568px) {
@@ -19,6 +26,7 @@
     .login__icon {
         width: 260px;
         justify-content: center;
+        margin-bottom: 45px;
     }
 }
 
@@ -27,8 +35,6 @@
     height: 38px;
     
 }
-
-
 
 @media screen and (max-width: 960px) {
 
@@ -62,7 +68,7 @@
 
     .login__title {
         text-align: left;
-        margin-left: 186px;
+        
     }
 }
 
@@ -70,7 +76,6 @@
 
     .login__title {
         width: 260px;
-        margin-left: 30px;
         margin-bottom: 80px;
         text-align: center;
     }
@@ -93,7 +98,7 @@
 }
 
 .login__button_type_register {
-    margin-top: 152px;
+    margin-top: 145px;
 }
 
 .login__button_type_disabled {
@@ -104,6 +109,8 @@
 }
 
 .login__link-bottom {
+    max-width: 396px;
+    margin: 0 auto;
     color: #8B8B8B;
     text-align: center;
     font-size: 14px;

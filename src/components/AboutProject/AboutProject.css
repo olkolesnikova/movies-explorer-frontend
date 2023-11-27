@@ -1,3 +1,21 @@
+.page__about-project {
+    padding-top: 110px;
+}
+
+@media screen and (max-width: 1160px) {
+
+    .page__about-project {
+        padding-top: 90px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .page__about-project {
+        padding-top: 70px;
+    }
+}
+
 .about-project {
     background-color: #202020;
     display: flex;
@@ -6,14 +24,14 @@
 }
 
 .about-project__header {
-    
+    max-width: 1140px;
     margin-left: 70px;
     margin-right: 70px;
     border-bottom: 1px solid #DADADA;
 
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 960px) {
 
     .about-project__header {
         margin-left: 50px;
@@ -21,7 +39,7 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .about-project__header {
         margin-left: 18px;
@@ -40,7 +58,7 @@
     margin: 0;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .about-project__title {
         font-size: 18px;
@@ -53,14 +71,13 @@
     display: flex;
     margin: 0 70px;
     max-width: 1140px;
-    
     margin-top: 70px;
-    margin-bottom: 70px;
+    margin-bottom: 110px;
     gap: 40px;
 
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 960px) {
 
     .about-project__info {
         margin: 0 50px;
@@ -70,14 +87,14 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .about-project__info {
         margin: 0 18px;
         margin-top: 60px;
         margin-bottom: 60px;
         flex-direction: column;
-        
+        gap: 56px;
     }
 }
 
@@ -87,7 +104,7 @@
     max-width: 550px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .about-project__info-column {
         max-width: 319px;
@@ -105,14 +122,14 @@
     margin-bottom: 26px;
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 960px) {
 
     .about-project__info-title {
         margin-bottom: 22px;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .about-project__info-title {
         margin-bottom: 16px;
@@ -130,7 +147,7 @@
     margin: 0;
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 960px) {
 
     .about-project__info-paragraph {
         font-size: 12px;
@@ -138,7 +155,7 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .about-project__info-paragraph {
         font-size: 11px;
@@ -148,7 +165,7 @@
 
 .about-project__scale {
     max-width: 1140px;
-    margin: 0 auto;
+    margin: 0 70px;
     display: grid;
     grid-template-columns: minmax(100px, 228px) minmax(184px, 912px);
     grid-template-rows: repeat(2, 35px);
@@ -158,21 +175,22 @@
     margin-bottom: 110px;
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 960px) {
 
     .about-project__scale {
-        
+
         margin: 0 50px;
+        grid-template-columns: minmax(100px, 140px) minmax(184px, 912px);
         margin-bottom: 90px;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .about-project__scale {
         grid-template-columns: minmax(100px, 228px) minmax(184px, 528px);
         margin: 0 18px;
-        margin-bottom: 90px;
+        margin-bottom: 69px;
     }
 }
 
@@ -193,7 +211,7 @@
     margin: 0;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .about-project__scale-cell-text {
         font-size: 11px;
@@ -224,13 +242,13 @@
 
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 568px) {
 
     .about-project__scale-description {
         margin: 0;
         font-size: 11px;
         font-weight: 400;
         line-height: normal;
-        
+
     }
 }

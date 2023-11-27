@@ -5,12 +5,18 @@ function Promo() {
 
     return (
         <section className='promo'>
-            <img src={promoPicture} alt="" className='promo__picture' />
-            <h1 className='promo__title'>Учебный проект студента факультета Веб&#8209;разработки.</h1>
-            <p className='promo__subtitle'>Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
+            <div className='promo__content'>
+                <div className='promo__content-text'>
+                    <h1 className='promo__content-title'>Учебный проект студента факультета Веб&#8209;разработки.</h1>
+                    <p className='promo__content-subtitle'>Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
+                </div>
+                <div className='promo__content-picture'>
+                    <img src={promoPicture} alt="Картинка земного шара, состоящая из слов web" className='promo__content-image' />
+                </div>
+            </div>
 
             <a href="#about-project" className='promo__button'>
-                <button type='button' className='promo__button-text'>Узнать больше</button>
+                Узнать больше
             </a>
 
         </section>

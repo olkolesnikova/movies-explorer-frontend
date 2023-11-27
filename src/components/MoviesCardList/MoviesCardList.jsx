@@ -10,7 +10,7 @@ function MoviesCardList() {
 
     return (
         <section className='moviesCardList'>
-            <div className='moviesCardList__elements page__moviesCardList'>
+            <ul className='moviesCardList__elements page__moviesCardList'>
                 <MoviesCard cardImage={moviesCardImage}></MoviesCard>
                 <MoviesCard cardImage={moviesCardImageSecond} isSaved={isSaved}></MoviesCard>
                 <MoviesCard cardImage={moviesCardImageSecond} isSaved={isSaved}></MoviesCard>
@@ -22,7 +22,7 @@ function MoviesCardList() {
                 <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
                 <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
                 
-            </div>
+            </ul>
         </section>
     )
 }
