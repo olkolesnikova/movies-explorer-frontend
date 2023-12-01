@@ -79,16 +79,21 @@
 
 .profile__form-input {
     display: flex;
+    
     justify-content: space-between;
     border-bottom: 1px solid #424242;
     margin-bottom: 17px;
-    padding-bottom: 16px;
+    height: 32px;
+}
+
+.profile__form-input:focus {
+    outline: 1.5px solid white;
 }
 
 .profile__form-input:last-of-type {
     border: none;
     margin-bottom: 0;
-    padding-bottom: 0;
+    
 }
 
 .profile__form-input-title {
@@ -108,7 +113,21 @@
     font-weight: 400;
     line-height: normal;
     border: none;
-    padding: 0;
+    padding-bottom: 14px;
+    padding-top: 0;
+}
+
+.profile__form-input-value-error {
+
+    color: #EE3465;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 6px;
+    border-bottom: none;
+    padding-bottom: 10px;
 }
 
 .profile__edit-link {
@@ -138,6 +157,13 @@
     line-height: normal;
     margin-bottom: 50px;
     padding: 0;
+}
+
+.profile__save-link_type_disabled {
+    cursor: default;
+    border-radius: 6px;
+    background: #F8F8F8;
+    color: #000;
 }
 
 .profile__exit-link {

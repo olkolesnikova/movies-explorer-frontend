@@ -32,7 +32,7 @@
 .menu_open {
     display: flex;
     z-index: 20;
-    height: 100%;
+    height: 100vh;
     background-color: #202020;
 }
 
@@ -67,6 +67,10 @@
     background-color: transparent;
 }
 
+.menu__button-close:hover {
+    opacity: .7;
+}
+
 .menu__content {
     width: 100%;
     height: 100%;
@@ -91,11 +95,17 @@
 
     .menu__list {
         margin-bottom: 300px;
+        margin-top: 145px;
     }
 }
 
 .menu__list-item {
     margin-bottom: 28px;
+    margin-bottom: 26px;
+}
+
+.menu__list-item:hover {
+    opacity: .7;
 }
 
 .menu__list-item:last-of-type {
@@ -122,9 +132,19 @@
     align-items: center;
     text-decoration: none;
     margin: 0 auto;
-    margin-top: calc(100vh - 400px);
-    
-    
+    margin-top: calc(100vh - 400px);   
+}
+
+.menu__profile-link:hover {
+    opacity: .7;
+}
+
+@media screen and (max-width: 568px) {
+
+    .profile-link {
+        margin-bottom: 300px;
+        margin-top: calc(100vh - 700px);
+    }
 }
 
 .menu__account-link {

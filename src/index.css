@@ -1,20 +1,21 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/fonts.css);
 
+.body {
+  background: #202020;
+}
+
 .page {
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background: #202020;
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   box-sizing: border-box;
   
 }
-
-* { outline: 1px solid yellow; }
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

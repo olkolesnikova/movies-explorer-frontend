@@ -14,6 +14,10 @@
     display: flex;
 }
 
+.login__icon:hover {
+    opacity: .7;
+}
+
 @media screen and (max-width: 960px) {
 
     .login__icon {
@@ -129,8 +133,6 @@
     }
 }
 
-
-
 .login__link-register {
     color: #4285F4;
     text-align: center;
@@ -139,6 +141,10 @@
     font-weight: 400;
     line-height: normal;
     text-decoration: none;
+}
+
+.login__link-register:hover {
+    opacity: .7;
 }
 
 @media screen and (max-width: 568px) {

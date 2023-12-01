@@ -56,7 +56,6 @@
 }
 
 .notfound__link-back {
-
     color: #4285F4;
     text-align: center;
     font-family: Inter;
@@ -66,6 +65,10 @@
     line-height: normal;
     text-decoration: none;
     margin-bottom: 60px;
+}
+
+.notfound__link-back:hover {
+    opacity: .7;
 }
 
 @media screen and (max-width: 960px) {

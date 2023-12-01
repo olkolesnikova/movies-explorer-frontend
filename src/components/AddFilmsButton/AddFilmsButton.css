@@ -17,8 +17,7 @@
 
     .addFilmsButton__area {
         max-width: 708px;
-        margin: 0 30px;
-               
+        margin: 0 30px;               
     }
 }
 
@@ -34,8 +33,6 @@
 .page__addFilmsButton {
     margin-top: 50px;
 }
-
-
 
 .addFilmsButton__area-button {
     background-color: #2F2F2F;
@@ -53,5 +50,9 @@
     font-weight: 500;
     line-height: normal;
     border: none;
+}
+
+.addFilmsButton__area-button:hover {
+    opacity: .7;
 }
 

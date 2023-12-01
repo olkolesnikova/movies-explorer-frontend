@@ -54,6 +54,10 @@
     border-bottom: 1px solid #424242;
 }
 
+.loginForm__input-value:focus {
+    outline: 1px solid white;
+}
+
 .loginForm__input-value-error {
 
     color: #EE3465;

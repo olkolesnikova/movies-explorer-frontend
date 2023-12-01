@@ -220,6 +220,10 @@
     text-decoration: none;
 }
 
+.about-me__link:hover {
+    opacity: .7;
+}
+
 @media screen and (max-width: 960px) {
 
     .about-me__link {

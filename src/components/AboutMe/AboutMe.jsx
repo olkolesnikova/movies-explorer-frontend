@@ -8,12 +8,12 @@ function AboutMe() {
     return (
         <section className='about-me'>
             <div className='about-me__header page__about-me'>
-                <p className='about-me__title'>Студент</p>
+                <h2 className='about-me__title'>Студент</h2>
             </div>
 
             <div className='about-me__content'>
                 <div className='about-me__content-info'>
-                    <h2 className='about-me__main-title'>Ольга</h2>
+                    <h3 className='about-me__main-title'>Ольга</h3>
                     <p className='about-me__subtitle'>Фронтенд-разработчик, 33 года</p>
                     <p className='about-me__description'>Я родилась и живу в Екатеринбурге, выросла в городе Качканар Свердловской области.
                         Закончила металлургический факультет Уральского Федерального университета.

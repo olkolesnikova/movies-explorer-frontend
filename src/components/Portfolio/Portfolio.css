@@ -97,6 +97,10 @@
     text-decoration: none;
 }
 
+.portfolio__item-title:hover {
+    opacity: .7;
+}
+
 @media screen and (max-width: 960px) {
 
     .portfolio__item-title {

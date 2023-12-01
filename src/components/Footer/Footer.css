@@ -118,6 +118,10 @@
     text-decoration: none;
 }
 
+.footer__items-title:hover {
+    opacity: .7;
+}
+
 @media screen and (max-width: 568px) {
 
     .footer__items-title {

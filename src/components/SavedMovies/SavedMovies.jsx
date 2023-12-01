@@ -7,10 +7,10 @@ import './../Movies/Movies.css';
 function SavedMovies() {
 
     return (
-
-        <><SearchForm></SearchForm>
-        <MoviesCardList></MoviesCardList></>
-
+        <main>
+            <><SearchForm></SearchForm>
+                <MoviesCardList></MoviesCardList></>
+        </main>
     )
 }
 

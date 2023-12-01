@@ -11,16 +11,16 @@ function MoviesCardList() {
     return (
         <section className='moviesCardList'>
             <ul className='moviesCardList__elements page__moviesCardList'>
-                <MoviesCard cardImage={moviesCardImage}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond} isSaved={isSaved}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond} isSaved={isSaved}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
-                <MoviesCard cardImage={moviesCardImageSecond}></MoviesCard>
+                <MoviesCard cardImage={moviesCardImage} alt={'Постер к фильму'}></MoviesCard>
+                <MoviesCard cardImage={moviesCardImageSecond} isSaved={isSaved} alt={'Постер к фильму'}></MoviesCard>
+                <MoviesCard cardImage={moviesCardImageSecond} isSaved={isSaved} alt={'Постер к фильму'}></MoviesCard>
+                <MoviesCard cardImage={moviesCardImageSecond} alt={'Постер к фильму'}></MoviesCard>
+                <MoviesCard cardImage={moviesCardImageSecond} alt={'Постер к фильму'}></MoviesCard>
+                <MoviesCard cardImage={moviesCardImageSecond} alt={'Постер к фильму'}></MoviesCard>
+                <MoviesCard cardImage={moviesCardImageSecond} alt={'Постер к фильму'}></MoviesCard>
+                <MoviesCard cardImage={moviesCardImageSecond} alt={'Постер к фильму'}></MoviesCard>
+                <MoviesCard cardImage={moviesCardImageSecond} alt={'Постер к фильму'}></MoviesCard>
+                <MoviesCard cardImage={moviesCardImageSecond} alt={'Постер к фильму'}></MoviesCard>
                 
             </ul>
         </section>
