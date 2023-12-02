@@ -13,6 +13,7 @@ function RegisterForm({ isDisabled = false }) {
             <div className='loginForm__input'>
                 <label htmlFor="loginForm-username" className='loginForm__input-title'>Имя</label>
                 <input id='loginForm-username' type="text" name="username" className='loginForm__input-value'
+                placeholder='Имя'
                     minLength={2}
                     maxLength={30}
                     required

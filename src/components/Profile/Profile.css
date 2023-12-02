@@ -142,6 +142,11 @@
     margin-bottom: 16px;
     border: none;
     background-color: #202020;
+    
+}
+
+.profile__edit-link:hover {
+    opacity: .7;
 }
 
 .profile__save-link {
@@ -157,6 +162,16 @@
     line-height: normal;
     margin-bottom: 50px;
     padding: 0;
+    border: none;
+    outline: 1px solid #3456F3;
+}
+
+@media screen and (max-width: 568px) {
+
+    .profile__save-link {
+        width: 260px;
+        
+    }
 }
 
 .profile__save-link_type_disabled {
@@ -164,6 +179,8 @@
     border-radius: 6px;
     background: #F8F8F8;
     color: #000;
+    border: none;
+    outline: 1px solid #F8F8F8;
 }
 
 .profile__exit-link {
@@ -175,12 +192,15 @@
 
 .profile__exit-link-text {
     color: #EE3465;
-    
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-decoration: none;
+}
+
+.profile__exit-link-text:hover {
+    opacity: .7;
 }
 
 @media screen and (max-width: 960px) {

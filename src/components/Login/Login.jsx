@@ -14,7 +14,7 @@ function Login() {
         <main className="login">
             <div className="login__icon">
                 <Link to='/'>
-                    <img src={headerLogo} alt="" className="login__icon-logo" />
+                    <img src={headerLogo} alt="Логотип проекта BeatFilm" className="login__icon-logo" />
                 </Link>
             </div>
             <h1 className="login__title">Рады видеть!</h1>            

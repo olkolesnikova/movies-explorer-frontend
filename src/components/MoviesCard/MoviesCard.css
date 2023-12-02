@@ -92,7 +92,11 @@
     height: 29px;
     border-radius: 30px;
     margin-bottom: 18px;
+    
+}
 
+.movies__card-button:hover {
+    opacity: .7;
 }
 
 @media screen and (max-width: 568px) {

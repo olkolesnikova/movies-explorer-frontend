@@ -11,7 +11,7 @@ function Portfolio() {
                     <a href="https://github.com/olkolesnikova/how-to-learn" className='portfolio__item-title' target='blank'>
                         <div>Статичный сайт</div>
                         <div className='portfolio__item-link'>
-                            <img src={arrowImage} className='portfolio__item-link-image' alt="" />
+                            <img src={arrowImage} className='portfolio__item-link-image' alt="Изображение стрелки" />
                         </div>
                     </a>
                 </li>
@@ -19,7 +19,7 @@ function Portfolio() {
                     <a href="https://github.com/olkolesnikova/russian-travel" className='portfolio__item-title' target='blank'>
                         <div>Адаптивный сайт</div>
                         <div className='portfolio__item-link'>
-                            <img src={arrowImage} className='portfolio__item-link-image' alt="" />
+                            <img src={arrowImage} className='portfolio__item-link-image' alt="Изображение стрелки" />
                         </div>
                     </a>
                 </li>
@@ -27,7 +27,7 @@ function Portfolio() {
                     <a href="https://github.com/olkolesnikova/react-mesto-auth" className='portfolio__item-title' target='blank'>
                         <div>Одностраничное приложение</div>
                         <div className='portfolio__item-link'>
-                            <img src={arrowImage} className='portfolio__item-link-image' alt="" />
+                            <img src={arrowImage} className='portfolio__item-link-image' alt="Изображение стрелки" />
                         </div>
                     </a>
 

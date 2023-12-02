@@ -164,10 +164,6 @@
     margin-left: 50px;    
 }
 
-.header__profile-link:hover {
-    opacity: .7;
-}
-
 @media screen and (max-width: 1168px) {
 
     .header__profile-link {
@@ -184,7 +180,10 @@
     font-weight: 500;
     line-height: 16px;
     text-decoration: none;
-   
+}
+
+.header__account-link:hover {
+    opacity: .7;
 }
 
 .header__account-button {
@@ -195,6 +194,10 @@
     background-color: #0F4157;
     padding: 0;
     
+}
+
+.header__account-button:hover {
+    opacity: .7;
 }
 
 .header__account-button_type_black {

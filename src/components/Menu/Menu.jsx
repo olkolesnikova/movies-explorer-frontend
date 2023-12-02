@@ -20,7 +20,7 @@ function Menu({ isOpen, onClose }) {
                     <div className='menu__profile-link'>
                         <a href="/profile" className='menu__account-link'>Аккаунт</a>
                         <a href="/profile" className='menu__account-button'>
-                            <img alt="" src={headerAccountLink} className="menu__account-icon" />
+                            <img alt="Изображение человечка" src={headerAccountLink} className="menu__account-icon" />
                         </a>
 
                         

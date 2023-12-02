@@ -7,10 +7,11 @@ import './Movies.css';
 function Movies() {
 
     return (
-
-        <><><SearchForm></SearchForm>
-            <MoviesCardList></MoviesCardList></>
-            <AddFilmsButton></AddFilmsButton></>
+        <main className="movies">
+            <><><SearchForm></SearchForm>
+                <MoviesCardList></MoviesCardList></>
+                <AddFilmsButton></AddFilmsButton></>
+        </main>
     )
 }
 

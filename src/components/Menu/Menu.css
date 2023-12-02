@@ -13,7 +13,7 @@
 .menu {
     background-color: #202020;
     width: 520px;
-    height: 100vh;
+    height: 100%;
     display: none;
     position: absolute;
     opacity: 1;
@@ -135,14 +135,10 @@
     margin-top: calc(100vh - 400px);   
 }
 
-.menu__profile-link:hover {
-    opacity: .7;
-}
-
 @media screen and (max-width: 568px) {
 
-    .profile-link {
-        margin-bottom: 300px;
+    .menu__profile-link {
+        margin-bottom: 50px;
         margin-top: calc(100vh - 700px);
     }
 }
@@ -157,6 +153,10 @@
    
 }
 
+.menu__account-link:hover {
+    opacity: .7;
+}
+
 .menu__account-button {
     width: 30px;
     height: 30px;
@@ -165,6 +165,10 @@
     background-color: #0F4157;
     padding: 0;
     background-color: rgba(49, 49, 49, 1);
+}
+
+.menu__account-button:hover {
+    opacity: .7;
 }
 
 .menu__account-icon {

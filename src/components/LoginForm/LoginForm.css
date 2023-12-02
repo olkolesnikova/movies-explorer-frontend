@@ -83,6 +83,7 @@
     line-height: normal;
     margin-bottom: 16px;
     padding: 0;
+    cursor: pointer;
 }
 
 .loginForm__button:hover {
@@ -98,6 +99,7 @@
     border-radius: 6px;
     background: #F8F8F8;
     color: #000;
+    outline: 1px solid #F8F8F8;
 }
 
 @media screen and (max-width: 568px) {

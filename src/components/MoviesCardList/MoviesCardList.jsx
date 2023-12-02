@@ -9,8 +9,8 @@ function MoviesCardList() {
     const [isSaved, setIsSaved] = useState(true);
 
     return (
-        <section className='moviesCardList'>
-            <ul className='moviesCardList__elements page__moviesCardList'>
+        <section className='moviesCardList page__moviesCardList'>
+            <ul className='moviesCardList__elements'>
                 <MoviesCard cardImage={moviesCardImage} alt={'Постер к фильму'}></MoviesCard>
                 <MoviesCard cardImage={moviesCardImageSecond} isSaved={isSaved} alt={'Постер к фильму'}></MoviesCard>
                 <MoviesCard cardImage={moviesCardImageSecond} isSaved={isSaved} alt={'Постер к фильму'}></MoviesCard>

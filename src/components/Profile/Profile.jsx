@@ -13,7 +13,7 @@ function Profile() {
                 <h1 className='profile__title page__profile'>Привет, Виталий!</h1>
                 <form action="№" className='profile__form' name='profileForm'>
                     <div className='profile__form-input'>
-                        <label htmlFor="username" className='profile__form-input-title'>Имя</label>
+                        <label htmlFor="profile-username" className='profile__form-input-title'>Имя</label>
                         <input id='profile-username' type="text" name="username" className='profile__form-input-value'
                             placeholder='Имя'
                             minLength={2}
@@ -28,7 +28,7 @@ function Profile() {
                     </span>
 
                     <div className='profile__form-input'>
-                        <label htmlFor="email" className='profile__form-input-title'>E-mail</label>
+                        <label htmlFor="profile-email" className='profile__form-input-title'>E-mail</label>
                         <input id='profile-email' type="email" name="email" className='profile__form-input-value'
                             placeholder='E-mail'
                             minLength={2}
@@ -42,7 +42,10 @@ function Profile() {
                         {errors.email || ''}
                     </span>
                 </form>
-                <button type='submit' className={isInputDisabled || isValid ? 'profile__edit-link profile__save-link' : 'profile__save-link profile__save-link_type_disabled'} onClick={() => setIsInputDisabled(false)}>
+                <button type='submit' className={isInputDisabled ?
+                    'profile__edit-link' : 'profile__save-link profile__save-link_type_disabled' && isValid ?
+                    'profile__save-link' : 'profile__save-link profile__save-link_type_disabled'}
+                    onClick={() => setIsInputDisabled(false)}>
                     {isInputDisabled ? 'Редактировать' : 'Сохранить'}
                 </button>
 
