@@ -1,1 +1,3 @@
-# movies-explorer-frontend
+# Дипломный проект
+
+## Макет dark-4

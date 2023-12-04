@@ -1,0 +1,131 @@
+.footer {
+    
+    background-color: #202020;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    
+}
+
+.footer__description {
+    max-width: 1140px;
+    margin: 0 70px;
+    background-color: #202020;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #424242;
+    color: #8B8B8B;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 568px) {
+
+    .footer__description {
+        max-width: 300px;
+        padding-bottom: 21px;
+        margin: 0 auto;
+        padding-top: 55px;
+        font-size: 12px;
+    }
+}
+
+.footer__content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1140px;
+    margin: 0 70px;
+    padding-bottom: 20px;
+}
+
+@media screen and (max-width: 960px) {
+
+    .footer__content {
+        
+        margin: 0 30px;
+        
+    }
+}
+
+@media screen and (max-width: 568px) {
+
+    .footer__content {
+        flex-direction: column-reverse;
+        padding-bottom: 0;
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+}
+
+.footer__copyright {
+    margin: 0;
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media screen and (max-width: 568px) {
+
+    .footer__copyright {
+        color: #8B8B8B;
+        font-size: 12px;
+        background-color: #202020;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+}
+
+.footer__items {
+    margin: 0;
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    padding: 0;
+    
+}
+
+@media screen and (max-width: 568px) {
+
+    .footer__items {
+        flex-direction: column;
+        margin-top: 30px;
+        gap: 12px;
+        padding-bottom: 25px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.footer__items-title {
+    color: #FFF;
+    text-align: right;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.footer__items-title:hover {
+    opacity: .7;
+}
+
+@media screen and (max-width: 568px) {
+
+    .footer__items-title {
+        text-align: center;
+        font-size: 12px;
+    }
+}
