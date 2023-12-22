@@ -33,12 +33,16 @@
 }
 
 .movies__card-title {
+    width: 240px;
     color: #FFF;
     font-size: 15px;
     font-style: normal;
     font-weight: 500;
     line-height: 18px;
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 
 }
 
@@ -92,7 +96,8 @@
     height: 29px;
     border-radius: 30px;
     margin-bottom: 18px;
-    
+    cursor: pointer;
+    outline: 1px solid #313131;
 }
 
 .movies__card-button:hover {

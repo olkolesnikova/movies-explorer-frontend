@@ -1,13 +1,22 @@
 import './LoginForm.css';
 import { useFormWithValidation } from '../hooks/useForm';
 
-function LoginForm({ isDisabled = false }) {
+function LoginForm({ onLogin }) {
 
     const { values, handleChange, errors, isValid } = useFormWithValidation();
 
+    function handleSubmit(event) {
+
+        event.preventDefault();
+        onLogin({
+            email: values.email,
+            password: values.password
+        });
+    }
+
     return (
 
-        <form className="loginForm">
+        <form className="loginForm" onSubmit={handleSubmit}>
             <div className='loginForm__input'>
                 <label htmlFor="loginForm-email" className='loginForm__input-title'>E-mail</label>
                 <input id='loginForm-email' type="email" name="email" className='loginForm__input-value'
@@ -37,7 +46,7 @@ function LoginForm({ isDisabled = false }) {
                     {errors.password || ""}
                 </span>
             </div>
-            <button type="submit" disabled={isDisabled}
+            <button type="submit"
                 className={isValid ? 'loginForm__button' : 'loginForm__button loginForm__button_type_disabled'}>Войти</button>
 
         </form>

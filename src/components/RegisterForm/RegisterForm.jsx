@@ -2,26 +2,36 @@ import '../LoginForm/LoginForm.css';
 import { useFormWithValidation } from '../hooks/useForm';
 
 
-function RegisterForm({ isDisabled = false }) {
+function RegisterForm({ onLogin }) {
 
     const { values, handleChange, errors, isValid } = useFormWithValidation();
 
+    function handleSubmit(event) {
+
+        event.preventDefault();
+        onLogin({
+            name: values.name,
+            email: values.email,
+            password: values.password
+        });
+    }
+
     return (
 
-        <form className="loginForm">
+        <form className="loginForm" onSubmit={handleSubmit}>
 
             <div className='loginForm__input'>
-                <label htmlFor="loginForm-username" className='loginForm__input-title'>Имя</label>
-                <input id='loginForm-username' type="text" name="username" className='loginForm__input-value'
+                <label htmlFor="loginForm-name" className='loginForm__input-title'>Имя</label>
+                <input id='loginForm-name' type="text" name="name" className='loginForm__input-value'
                 placeholder='Имя'
                     minLength={2}
                     maxLength={30}
                     required
-                    value={values.username || ""}
+                    value={values.name || ""}
                     onChange={handleChange}
                 />
-                <span className='loginForm-username-error loginForm__input-value-error'>
-                    {errors.username || ""}
+                <span className='loginForm-name-error loginForm__input-value-error'>
+                    {errors.name || ""}
                 </span>
             </div>
 
@@ -54,7 +64,7 @@ function RegisterForm({ isDisabled = false }) {
                     {errors.password || ""}
                 </span>
             </div>
-            <button type="submit" disabled={isDisabled}
+            <button type="submit" onClick={() => console.log('хрень')}
                 className={isValid ? 'loginForm__button loginForm__button_type_register' : 'loginForm__button loginForm__button_type_register loginForm__button_type_disabled'}>Зарегистрироваться</button>
 
         </form>

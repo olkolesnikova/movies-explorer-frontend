@@ -1,13 +1,13 @@
 import './Promo.css';
 import promoPicture from '../../../src/images/promo-picture-svg.svg'
 
-function Promo() {
+function Promo({ onSignOut }) {
 
     return (
         <section className='promo'>
             <div className='promo__content'>
                 <div className='promo__content-text'>
-                    <h1 className='promo__content-title'>Учебный проект студента факультета Веб&#8209;разработки.</h1>
+                    <h1 className='promo__content-title' onClick={onSignOut}>Учебный проект студента факультета Веб&#8209;разработки.</h1>
                     <p className='promo__content-subtitle'>Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
                 </div>
                 <div className='promo__content-picture'>
@@ -15,7 +15,7 @@ function Promo() {
                 </div>
             </div>
 
-            <a href="#about-project" className='promo__button'>
+            <a href="#about-project" className='promo__button' >
                 Узнать больше
             </a>
 

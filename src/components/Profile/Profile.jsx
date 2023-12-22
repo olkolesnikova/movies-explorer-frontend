@@ -1,30 +1,34 @@
 import './../Profile/Profile.css';
 import { useFormWithValidation } from '../hooks/useForm';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { Link } from 'react-router-dom';
 
-function Profile() {
+function Profile({ onSignOut }) {
 
     const { values, handleChange, errors, isValid } = useFormWithValidation();
     const [isInputDisabled, setIsInputDisabled] = useState(true);
+    const currentUser = useContext(CurrentUserContext);
+    
 
     return (
         <main>
             <section className='profile'>
-                <h1 className='profile__title page__profile'>Привет, Виталий!</h1>
-                <form action="№" className='profile__form' name='profileForm'>
+                <h1 className='profile__title page__profile'>{`Привет, ${currentUser.name}!`}</h1>
+                <form action="#" className='profile__form' name='profileForm'>
                     <div className='profile__form-input'>
-                        <label htmlFor="profile-username" className='profile__form-input-title'>Имя</label>
-                        <input id='profile-username' type="text" name="username" className='profile__form-input-value'
+                        <label htmlFor="profile-name" className='profile__form-input-title'>Имя</label>
+                        <input id='profile-name' type="text" name="name" className='profile__form-input-value'
                             placeholder='Имя'
                             minLength={2}
                             maxLength={30}
                             required
-                            value={values.username || ""}
+                            value={values.name || ""}
                             onChange={handleChange}
                             disabled={isInputDisabled} />
                     </div>
-                    <span className='profile-username-error profile__form-input-value-error'>
-                        {errors.username || ""}
+                    <span className='profile-name-error profile__form-input-value-error'>
+                        {errors.name || ""}
                     </span>
 
                     <div className='profile__form-input'>
@@ -50,7 +54,11 @@ function Profile() {
                 </button>
 
                 {isInputDisabled && (
-                    <p className='profile__exit-link'><a href="/" className='profile__exit-link-text'>Выйти из аккаунта</a></p>
+                    <p className='profile__exit-link'><Link to="/" className='profile__exit-link-text' 
+                    onClick={onSignOut}
+                    
+                    >Выйти из аккаунта</Link></p>
+                
                 )}
             </section>
         </main>

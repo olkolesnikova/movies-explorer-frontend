@@ -5,7 +5,7 @@ import './Login.css';
 import { useFormWithValidation } from '../hooks/useForm';
 
 
-function Login() {
+function Login({ onLogin }) {
 
     const { isValid } = useFormWithValidation();
     console.log(isValid);
@@ -19,7 +19,7 @@ function Login() {
             </div>
             <h1 className="login__title">Рады видеть!</h1>            
                 
-                <LoginForm isDisabled={!isValid}></LoginForm>
+                <LoginForm isDisabled={!isValid} onLogin={onLogin}></LoginForm>
                 
             <p className="login__link-bottom">Ещё не зарегистрированы? <Link to="/signup" className="login__link-register">Регистрация</Link></p>
         </main>
