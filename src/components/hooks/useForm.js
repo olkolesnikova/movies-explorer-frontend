@@ -18,6 +18,6 @@ const handleChange = (event) => {
     
 }
 
-return {values, handleChange, errors, isValid};
+return {values, setValues, handleChange, errors, isValid};
 
 }

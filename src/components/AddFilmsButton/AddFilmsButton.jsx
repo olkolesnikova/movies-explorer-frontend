@@ -1,12 +1,15 @@
 import './AddFilmsButton.css';
 
-function AddFilmsButton() {
+function AddFilmsButton({ movies, moviesForDisplay, onClick }) {
 
     return (
         <section className='addFilmsButton'>
-            <div className='addFilmsButton__area page__addFilmsButton'>
-                <button type="submit" className='addFilmsButton__area-button'>Ещё</button>
+           
+            {moviesForDisplay.length >= 5 && moviesForDisplay.length < movies.length && (
+                <div className='addFilmsButton__area page__addFilmsButton'>
+                <button type="submit" className='addFilmsButton__area-button' onClick={onClick}>Ещё</button>
             </div>
+            )}
         </section>
 
 

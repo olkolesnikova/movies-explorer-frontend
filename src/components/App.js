@@ -1,6 +1,6 @@
 import '../../src/index.css';
 import Main from './Main/Main';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Header from './Header/Header';
 import Movies from './Movies/Movies';
@@ -15,7 +15,7 @@ import { mainApi } from '../utils/MainApi';
 import * as auth from '../utils/auth';
 import Cookies from 'js-cookie';
 import ProtectedRoute from './ProtectedRoute';
-import { moviesApi } from '../utils/MoviesApi';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 
 function App() {
@@ -26,10 +26,9 @@ function App() {
   const [inited, setInited] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const [movies, setMovies] = useState([]);
-
-  const [searchValue, setSearchValue] = useState('');
-
+  const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
+  const [searchValue, setSearchValue] = useLocalStorage('searchValue', ' ');
+  const [errorOnUpdate, setErrorOnUpdate] = useState('');
 
   useEffect(() => {
 
@@ -40,7 +39,7 @@ function App() {
           setCurrentUser({
             name: currentUser.name,
             email: currentUser.email,
-
+            id: currentUser._id,
           })
         })
         .catch(console.error)
@@ -48,32 +47,24 @@ function App() {
 
   }, [loggedIn])
 
-  
+  function handleUpdateUser(data) {
 
-    /* moviesApi.getMovies()
-    .then((response) => {
-      console.log(response)
-      setMovies(response)
-    })
-    .catch(console.error) */
-  
-  
+    mainApi.updateUserInfo(data)
+      .then((data) => {
 
-  /* const getMovies = () => {
-    moviesApi.getMovies()
-      .then((response) => {
-        
-          setMovies(response)
-        console.log(response);
-        
-        
+        setCurrentUser({
+          name: data.name,
+          email: data.email,
+
+        });
+        setErrorOnUpdate('Данные обновлены');
+
       })
-      .catch(console.error)
-  } */
-
-  /* useEffect(() => {
-    getMovies();
-  }, []) */
+      .catch((error) => {
+        console.log(error);
+        setErrorOnUpdate(error);
+      })
+  }
 
   useEffect(() => {
     tokenCheck();
@@ -155,10 +146,43 @@ function App() {
           email: currentUser.email,
 
         })
+        localStorage.setItem('savedMovies', []);
+        localStorage.setItem('searchValue', '')
       })
       .catch(console.error)
   }
 
+  function handleDeleteMovie(deletemovieId) {
+    mainApi
+      .deleteMovie(deletemovieId)
+      .then(() => {
+        setSavedMovies(
+          savedMovies.filter((movie) => {
+            return movie._id !== deletemovieId;
+          })
+        );
+      })
+      .catch(console.error);
+  }
+
+  function handleSaveMovie(data) {
+    const isAdd = savedMovies.some((element) => data.id === element.movieId);
+    console.log(isAdd);
+    const foundMovie = savedMovies.filter((movie) => {
+      return movie.movieId === data.id;
+    });
+    if (isAdd) {
+      handleDeleteMovie(foundMovie[0]._id);
+    } else {
+      mainApi
+        .saveMovie(data)
+        .then((res) => {
+          setSavedMovies([res, ...savedMovies]);
+          console.log(savedMovies);
+        })
+        .catch(console.error);
+    }
+  }
 
   return (
 
@@ -179,12 +203,26 @@ function App() {
           <Route path='/' element={<Main onSignOut={handleSignOut} />} />
           <Route path='/movies' element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <Movies searchValue={searchValue} setSearchValue={setSearchValue} />
+              <Movies
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                onSave={handleSaveMovie}
+                onDelete={handleDeleteMovie}
+                isLoading={isLoading}
+              />
             </ProtectedRoute>
           } />
           <Route path='/saved-movies' element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <SavedMovies></SavedMovies>
+              <SavedMovies
+                savedMovies={savedMovies}
+                setSavedMovies={setSavedMovies}
+                onSave={handleSaveMovie}
+                onDelete={handleDeleteMovie}
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                isLoading={isLoading}
+              ></SavedMovies>
             </ProtectedRoute>
           }>
 
@@ -192,7 +230,11 @@ function App() {
 
           <Route path='/profile' element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <Profile onSignOut={handleSignOut} />
+              <Profile
+                onSignOut={handleSignOut}
+                onUpdate={handleUpdateUser}
+                errorOnUpdate={errorOnUpdate}
+                setErrorOnUpdate={setErrorOnUpdate} />
             </ProtectedRoute>
           }>
 

@@ -104,6 +104,10 @@
     opacity: .7;
 }
 
+.movies__card-button_type_saved-page {
+    background-image: url(../../images/button-on-saved-page.svg);
+}
+
 @media screen and (max-width: 568px) {
 
     .movies__card-button {
