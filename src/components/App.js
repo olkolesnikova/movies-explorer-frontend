@@ -123,19 +123,13 @@ function App() {
       .then((data) => {
         console.log(data);
         if (data) {
-
-          mainApi.getUserInfo()
-            .then((currentUser) => {
-              console.log(currentUser);
-              setCurrentUser({
-                name: currentUser.name,
-                email: currentUser.email,
-                id: currentUser._id,
-              })
-              setLoggedIn(true);
-              navigate('/');
-            })
-            .catch(console.error)
+          setCurrentUser({
+            name: data.name,
+            email: data.email,
+            id: data._id
+          })
+          setLoggedIn(true);
+          navigate('/');
         }
       })
       .catch(console.error)
