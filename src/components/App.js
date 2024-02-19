@@ -20,7 +20,7 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useLocalStorage('loggedIn', false);
+  const [loggedIn, setLoggedIn] = useState('loggedIn', 'false');
   const location = useLocation().pathname;
   const [currentUser, setCurrentUser] = useState(null);
   const [inited, setInited] = useState(false);
