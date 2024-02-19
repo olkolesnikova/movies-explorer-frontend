@@ -85,7 +85,7 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-    url: 'http://localhost:3000',
+    url: process.env.NODE_ENV === 'production' ? process.env.REACT_APP_URL : 'http://localhost:3000',
     credentials: 'include',
     headers: {
         'Content-type': 'application/json'
