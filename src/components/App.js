@@ -20,14 +20,14 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState('loggedIn', 'false');
+  const [loggedIn, setLoggedIn] = useLocalStorage('loggedIn', 'false');
   const location = useLocation().pathname;
   const [currentUser, setCurrentUser] = useState(null);
   const [inited, setInited] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
-  const [searchValue, setSearchValue] = useLocalStorage('searchValue', ' ');
+  const [searchValue, setSearchValue] = useLocalStorage('searchValue', '');
   const [errorOnUpdate, setErrorOnUpdate] = useState('');
 
   useEffect(() => {
@@ -146,8 +146,8 @@ function App() {
           email: currentUser.email,
 
         })
-        localStorage.setItem('savedMovies', []);
-        localStorage.setItem('searchValue', '')
+        //localStorage.setItem('savedMovies', []);
+        //localStorage.setItem('searchValue', '')
       })
       .catch(console.error)
   }
