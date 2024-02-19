@@ -148,6 +148,7 @@ function App() {
         })
         //localStorage.setItem('savedMovies', []);
         //localStorage.setItem('searchValue', '')
+        localStorage.clear();
       })
       .catch(console.error)
   }
