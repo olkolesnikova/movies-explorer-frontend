@@ -26,7 +26,8 @@ function Movies({ searchValue, setSearchValue, onSave, onDelete, isLoading }) {
     const [isSearching, setIsSearching] = useState(false);
 
 
-    const foundMovies = filterMovies(movies);
+    //const foundMovies = filterMovies(movies);
+    //console.log(foundMovies);
 
     useEffect(() => {
         moviesApi.getMovies()
@@ -60,7 +61,7 @@ function Movies({ searchValue, setSearchValue, onSave, onDelete, isLoading }) {
 
 
     function handleMoviesSearch(movies) {
-        //const foundMovies = filterMovies(movies);
+        const foundMovies = filterMovies(movies);
         if (foundMovies.length > 0) {
 
             const found = foundMovies.filter((movie, index) => {
@@ -125,18 +126,17 @@ function Movies({ searchValue, setSearchValue, onSave, onDelete, isLoading }) {
     function handleClickOnAddFilmsButton() {
 
         const start = moviesForDisplay.length;
-        console.log(start);
         const end = start + moviesRenderParams.additional;
-        console.log(end);
         const amount = end - start;
-        console.log(amount);
         if (amount > 0) {
-            //const foundMovies = filterMovies(movies);
+            const foundMovies = filterMovies(movies);
             const additionalMovies = foundMovies.slice(start, end);
             console.log(additionalMovies);
             setMoviesForDisplay([...moviesForDisplay, ...additionalMovies]);
         }
     }
+
+    const foundMovies = filterMovies(movies);
 
     return (
         <main className="movies">

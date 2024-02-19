@@ -64,7 +64,7 @@ function RegisterForm({ onLogin }) {
                     {errors.password || ""}
                 </span>
             </div>
-            <button type="submit" onClick={() => console.log('хрень')}
+            <button type="submit"
                 className={isValid ? 'loginForm__button loginForm__button_type_register' : 'loginForm__button loginForm__button_type_register loginForm__button_type_disabled'}>Зарегистрироваться</button>
 
         </form>

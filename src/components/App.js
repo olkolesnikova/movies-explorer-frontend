@@ -20,7 +20,7 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useLocalStorage('loggedIn', false);
   const location = useLocation().pathname;
   const [currentUser, setCurrentUser] = useState(null);
   const [inited, setInited] = useState(false);
@@ -36,6 +36,7 @@ function App() {
       mainApi.getUserInfo()
         .then((currentUser) => {
           console.log(currentUser);
+          
           setCurrentUser({
             name: currentUser.name,
             email: currentUser.email,
