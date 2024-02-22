@@ -5,24 +5,36 @@ import { useLocation } from "react-router-dom";
 
 function MoviesCard({ movie, onSave, onDelete, savedMovies }) {
 
-  const [isSaved, setIsSaved] = useState(false);
   const { pathname } = useLocation();
+  const [isSaved, setIsSaved] = useState(false)
 
   useEffect(() => {
     if (pathname === '/movies')
       setIsSaved(savedMovies.some(element => movie.id === element.movieId))
   }, [savedMovies, movie.id, setIsSaved, pathname])
 
-   
-  function onClickSave() {
+  function toggleSaveMovie(movie) {
+
     if (savedMovies.some(element => movie.id === element.movieId)) {
-      setIsSaved(true)
-      onSave(movie)
-    } else {
+      onDelete(movie)
       setIsSaved(false)
+    } else {
       onSave(movie)
+      setIsSaved(true)
     }
-  }
+  };
+
+  function handleToggleSaveMovie() {
+    toggleSaveMovie({
+      ...movie,
+      movieId: movie.id
+    });
+  };
+
+  function handleDeleteMovie() {
+    onDelete(movie);
+  };
+
 
   return (
 
@@ -38,16 +50,16 @@ function MoviesCard({ movie, onSave, onDelete, savedMovies }) {
       {pathname === "/movies" ? (
         <button
           type="button"
-          className={`movies__card-button ${isSaved ? "movies__card-button_type_saved" : ""}`}
-          onClick={onClickSave}
+          className={isSaved ? 'movies__card-button movies__card-button_type_saved' : 'movies__card-button'}
+          onClick={handleToggleSaveMovie}
         ></button>
       ) : (
         <button
           type="button"
           className={`movies__card-button movies__card-button_type_saved-page`}
-          onClick={() => onDelete(movie._id)}
+          onClick={handleDeleteMovie}
         ></button>
-      )}      
+      )}
     </li>
 
   )

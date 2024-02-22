@@ -71,7 +71,8 @@ class MainApi {
 
             method: 'DELETE',
             headers: this.headers,
-            credentials: 'include'
+            credentials: 'include',
+            body: JSON.stringify({ id })
         })
     }
 

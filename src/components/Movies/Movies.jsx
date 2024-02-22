@@ -12,14 +12,14 @@ import { ScreenSizeConfig } from "../../utils/ScreenSizeConfig";
 
 
 
-function Movies({ searchValue, setSearchValue, onSave, onDelete, isLoading }) {
+function Movies({ searchValue, setSearchValue, onSave, onDelete, isLoading, isSaved }) {
 
     const [movies, setMovies] = useState([]);
     const [moviesForDisplay, setMoviesForDisplay] = useState([]);
     const [errorMessage, setErrorMessage] = useState(false);
     const [validationError, setValidationError] = useState(false);
     const [isFilterChecked, setIsFilterChecked] = useLocalStorage('checkbox', 'false');
-    const [isSaved, setIsSaved] = useState(false);
+    
     const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
     const [moviesRenderParams, setMoviesRenderParams] = useState({});
     const screenWidth = useResizeScreen();
@@ -33,7 +33,7 @@ function Movies({ searchValue, setSearchValue, onSave, onDelete, isLoading }) {
         moviesApi.getMovies()
             .then((movies) => {
 
-                setMovies(movies);
+                setMoviesForDisplay(movies);
                 console.log(movies);
             })
             .catch(console.error)
@@ -159,12 +159,10 @@ function Movies({ searchValue, setSearchValue, onSave, onDelete, isLoading }) {
                     searchValue={searchValue}
                     movies={moviesForDisplay}
                     savedMovies={savedMovies}
-                    isSaved={isSaved}
-                    setIsSaved={setIsSaved}
                     onSave={onSave}
                     onDelete={onDelete}
                     moviesRenderParams={moviesRenderParams}
-
+                    isSaved={isSaved}
                 ></MoviesCardList></>
                 <AddFilmsButton
                     movies={foundMovies}

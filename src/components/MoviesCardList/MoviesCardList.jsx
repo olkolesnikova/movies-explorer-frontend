@@ -2,7 +2,7 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
 
-function MoviesCardList({ movies, onSave, onDelete, savedMovies, moviesRenderParams }) {
+function MoviesCardList({ movies, onSave, onDelete, savedMovies, moviesRenderParams}) {
 
     const location = useLocation().pathname;
 
@@ -22,7 +22,7 @@ function MoviesCardList({ movies, onSave, onDelete, savedMovies, moviesRenderPar
                                 savedMovies={savedMovies}
                                 id={movie.id}
                                 moviesRenderParams={moviesRenderParams}
-
+                                
                             ></MoviesCard>
                         )
                     })
@@ -40,7 +40,7 @@ function MoviesCardList({ movies, onSave, onDelete, savedMovies, moviesRenderPar
                                 onDelete={onDelete}
                                 savedMovies={savedMovies}
                                 id={movie.id}
-
+                                
                             ></MoviesCard>
                         )
                     })

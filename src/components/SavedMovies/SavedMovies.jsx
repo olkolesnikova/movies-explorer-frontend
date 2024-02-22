@@ -8,18 +8,24 @@ import { useState, useEffect } from 'react';
 function SavedMovies({ savedMovies, setSavedMovies, onSave, onDelete, searchValue, setSearchValue }) {
 
     const [moviesForDisplay, setMoviesForDisplay] = useState([]);
-    
-    const [isFilterChecked, setIsFilterChecked] = useLocalStorage('checkbox', 'false');
-    const [validationError, setValidationError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState(false);
-    
-    useEffect(() => {
-       
-        const fromLocal = JSON.parse(localStorage.getItem('savedMovies'));
-        console.log(fromLocal);
-        setMoviesForDisplay(fromLocal);
 
-    }, [])
+    const [isFilterChecked, setIsFilterChecked] = useLocalStorage('checkbox', 'false');
+    const [validationError, setValidationError] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    useEffect(() => {
+
+        /* const fromLocal = JSON.parse(localStorage.getItem('savedMovies'));
+        console.log(fromLocal);
+        setMoviesForDisplay(fromLocal); */
+
+
+        handleMoviesSearch(savedMovies)
+
+
+    }, [savedMovies])
+
+
 
     function filterMovies(movies) {
 
@@ -43,21 +49,19 @@ function SavedMovies({ savedMovies, setSavedMovies, onSave, onDelete, searchValu
 
 
     function handleMoviesSearch(movies) {
+
+        setErrorMessage('');
         const foundMovies = filterMovies(movies);
-console.log(foundMovies);
+
         if (foundMovies.length > 0) {
-            
             setMoviesForDisplay(foundMovies);
-            setErrorMessage('');
-            
+
         }
         else {
-            
-            setErrorMessage('Ничего не найдено');
+
             setMoviesForDisplay([]);
         }
     }
-
 
     function handleSearchClick() {
 
@@ -68,19 +72,18 @@ console.log(foundMovies);
 
         } else {
             setValidationError('');
-            
+            setErrorMessage('Ничего не найдено');
             const saved = JSON.parse(localStorage.getItem('savedMovies'));
             console.log(saved);
             handleMoviesSearch(saved);
         }
-
     }
 
     return (
         <main className='movies'>
             <><SearchForm movies={savedMovies} searchValue={searchValue} setSearchValue={setSearchValue}
                 onSearch={handleSearchClick} isFilterChecked={isFilterChecked} setIsFilterChecked={setIsFilterChecked}
-                ></SearchForm>
+            ></SearchForm>
                 <span className="movies__error">
                     {validationError}
                 </span>
@@ -88,11 +91,11 @@ console.log(foundMovies);
                     {errorMessage}
                 </span>
                 <MoviesCardList savedMovies={savedMovies} onSave={onSave} onDelete={onDelete}
-                movies={moviesForDisplay}
+                    movies={moviesForDisplay}
                 ></MoviesCardList></>
         </main>
 
-        
+
     )
 }
 

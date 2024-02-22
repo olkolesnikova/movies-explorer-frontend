@@ -22,13 +22,14 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useLocalStorage('loggedIn', 'false');
   const location = useLocation().pathname;
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState({});
   const [inited, setInited] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
   const [searchValue, setSearchValue] = useLocalStorage('searchValue', '');
   const [errorOnUpdate, setErrorOnUpdate] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
 
@@ -36,7 +37,7 @@ function App() {
       mainApi.getUserInfo()
         .then((currentUser) => {
           console.log(currentUser);
-          
+
           setCurrentUser({
             name: currentUser.name,
             email: currentUser.email,
@@ -146,44 +147,32 @@ function App() {
           email: currentUser.email,
 
         })
-        //localStorage.setItem('savedMovies', []);
-        //localStorage.setItem('searchValue', '')
         localStorage.clear();
       })
       .catch(console.error)
   }
 
-  function handleDeleteMovie(deletemovieId) {
-    mainApi
-      .deleteMovie(deletemovieId)
-      .then(() => {
-        setSavedMovies(
-          savedMovies.filter((movie) => {
-            return movie._id !== deletemovieId;
-          })
-        );
+  
+  function saveMovie(movie) {
+
+    mainApi.saveMovie(movie)
+      .then((savedMovie) => {
+        setSavedMovies([...savedMovies, savedMovie])
       })
       .catch(console.error);
-  }
+  };
 
-  function handleSaveMovie(data) {
-    const isAdd = savedMovies.some((element) => data.id === element.movieId);
-    console.log(isAdd);
-    const foundMovie = savedMovies.filter((movie) => {
-      return movie.movieId === data.id;
-    });
-    if (isAdd) {
-      handleDeleteMovie(foundMovie[0]._id);
-    } else {
-      mainApi
-        .saveMovie(data)
-        .then((res) => {
-          setSavedMovies([res, ...savedMovies]);
-          console.log(savedMovies);
-        })
-        .catch(console.error);
-    }
-  }
+  function deleteMovie(movie) {
+    
+    const savedMovie = savedMovies.find((item) => item.movieId === movie.movieId);
+    mainApi.deleteMovie(savedMovie._id)
+      .then(() => {
+        const newSavedMoviesArray = savedMovies.filter((item) => item.movieId !== movie.movieId)
+        setSavedMovies(newSavedMoviesArray);
+      })
+      .catch(console.error);
+  };
+  
 
   return (
 
@@ -207,9 +196,10 @@ function App() {
               <Movies
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
-                onSave={handleSaveMovie}
-                onDelete={handleDeleteMovie}
+                onSave={saveMovie}
+                onDelete={deleteMovie}
                 isLoading={isLoading}
+
               />
             </ProtectedRoute>
           } />
@@ -218,8 +208,8 @@ function App() {
               <SavedMovies
                 savedMovies={savedMovies}
                 setSavedMovies={setSavedMovies}
-                onSave={handleSaveMovie}
-                onDelete={handleDeleteMovie}
+                onSave={saveMovie}
+                onDelete={deleteMovie}
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
                 isLoading={isLoading}
