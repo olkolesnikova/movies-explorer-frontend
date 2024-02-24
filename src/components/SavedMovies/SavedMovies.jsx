@@ -19,7 +19,7 @@ function SavedMovies({ savedMovies, setSavedMovies, onSave, onDelete, searchValu
         console.log(fromLocal);
         setMoviesForDisplay(fromLocal); */
 
-
+        
         handleMoviesSearch(savedMovies)
 
 
@@ -50,15 +50,16 @@ function SavedMovies({ savedMovies, setSavedMovies, onSave, onDelete, searchValu
 
     function handleMoviesSearch(movies) {
 
-        setErrorMessage('');
+        setErrorMessage('')
         const foundMovies = filterMovies(movies);
 
         if (foundMovies.length > 0) {
             setMoviesForDisplay(foundMovies);
-
+            setErrorMessage('')
         }
         else {
-
+            setErrorMessage('');
+            setValidationError('');
             setMoviesForDisplay([]);
         }
     }
@@ -71,11 +72,13 @@ function SavedMovies({ savedMovies, setSavedMovies, onSave, onDelete, searchValu
             setMoviesForDisplay([]);
 
         } else {
+            const saved = JSON.parse(localStorage.getItem('savedMovies'));
+            handleMoviesSearch(saved);
             setValidationError('');
             setErrorMessage('Ничего не найдено');
-            const saved = JSON.parse(localStorage.getItem('savedMovies'));
+            
             console.log(saved);
-            handleMoviesSearch(saved);
+            
         }
     }
 

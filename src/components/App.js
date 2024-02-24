@@ -29,7 +29,9 @@ function App() {
   const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
   const [searchValue, setSearchValue] = useLocalStorage('searchValue', '');
   const [errorOnUpdate, setErrorOnUpdate] = useState('');
-  const [isSaved, setIsSaved] = useState(false);
+  const [isDisabledInput, setIsDisabledInput] = useState(false);
+  const [isServerError, setIsServerError] = useState('');
+  const [isLoginError, setIsLoginError] = useState('')
 
   useEffect(() => {
 
@@ -48,16 +50,13 @@ function App() {
     }
   }, [loggedIn])
 
-  function handleUpdateUser(data) {
+  function handleUpdateUser({ name, email }) {
 
-    mainApi.updateUserInfo(data)
-      .then((data) => {
+    setIsDisabledInput(true)
+    mainApi.updateUserInfo({ name, email })
+      .then(() => {
 
-        setCurrentUser({
-          name: data.name,
-          email: data.email,
-
-        });
+        setCurrentUser({ name, email });
         setErrorOnUpdate('Данные обновлены');
 
       })
@@ -65,6 +64,9 @@ function App() {
         console.log(error);
         setErrorOnUpdate(error);
       })
+      .finally(() => {
+        setIsDisabledInput(false)
+      });
   }
 
   useEffect(() => {
@@ -103,18 +105,17 @@ function App() {
   function handleRegister({ name, email, password }) {
 
     auth.register({ name, email, password })
-      .then((res) => {
-        if (!res || res.status === 400) {
-          console.log(res);
-          return res.data;
-        }
-        else {
-
+      .then((data) => {
+        if (data) {
+          setIsServerError('Успешная регистрация')
           navigate('/signin');
+
         }
+      })
+      .catch((err) => {
+        setIsServerError(err)
 
       })
-      .catch(console.error)
   }
 
   function handleLogin({ email, password }) {
@@ -134,25 +135,25 @@ function App() {
           navigate('/');
         }
       })
-      .catch(console.error)
+      .catch((err) => {
+        setIsLoginError(err)
+
+      })
   }
 
   function handleSignOut() {
 
     mainApi.signOut()
       .then(() => {
-        setLoggedIn(false);
-        setCurrentUser({
-          name: currentUser.name,
-          email: currentUser.email,
-
-        })
         localStorage.clear();
+        setLoggedIn(false);
+        navigate('/');
+        setCurrentUser({});
       })
       .catch(console.error)
   }
 
-  
+
   function saveMovie(movie) {
 
     mainApi.saveMovie(movie)
@@ -163,7 +164,7 @@ function App() {
   };
 
   function deleteMovie(movie) {
-    
+
     const savedMovie = savedMovies.find((item) => item.movieId === movie.movieId);
     mainApi.deleteMovie(savedMovie._id)
       .then(() => {
@@ -172,7 +173,7 @@ function App() {
       })
       .catch(console.error);
   };
-  
+
 
   return (
 
@@ -187,8 +188,8 @@ function App() {
 
         <Routes>
 
-          <Route path='/signin' element={<Login onLogin={handleLogin} />} />
-          <Route path='/signup' element={<Register onLogin={handleRegister} />} />
+          <Route path='/signin' element={<Login onLogin={handleLogin} isLoginError={isLoginError} />} />
+          <Route path='/signup' element={<Register onLogin={handleRegister} isServerError={isServerError} />} />
 
           <Route path='/' element={<Main onSignOut={handleSignOut} />} />
           <Route path='/movies' element={
@@ -225,7 +226,9 @@ function App() {
                 onSignOut={handleSignOut}
                 onUpdate={handleUpdateUser}
                 errorOnUpdate={errorOnUpdate}
-                setErrorOnUpdate={setErrorOnUpdate} />
+                setErrorOnUpdate={setErrorOnUpdate}
+                isDisabledInput={isDisabledInput}
+              />
             </ProtectedRoute>
           }>
 

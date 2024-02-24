@@ -17,15 +17,15 @@ class MainApi {
 
     }
 
-    updateUserInfo(data) {
+    updateUserInfo({ name, email }) {
 
         return this.request(`${this.url}/users/me`, {
 
             method: 'PATCH',
             headers: this.headers,
             body: JSON.stringify({
-                name: data.name,
-                email: data.email
+                name: name,
+			email: email,
             }),
             credentials: 'include'
         })

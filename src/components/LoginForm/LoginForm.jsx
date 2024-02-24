@@ -1,7 +1,7 @@
 import './LoginForm.css';
 import { useFormWithValidation } from '../hooks/useForm';
 
-function LoginForm({ onLogin }) {
+function LoginForm({ onLogin, isLoginError }) {
 
     const { values, handleChange, errors, isValid } = useFormWithValidation();
 
@@ -46,6 +46,7 @@ function LoginForm({ onLogin }) {
                     {errors.password || ""}
                 </span>
             </div>
+            <p className='loginForm__error'>{isLoginError}</p>
             <button type="submit"
                 className={isValid ? 'loginForm__button' : 'loginForm__button loginForm__button_type_disabled'}>Войти</button>
 

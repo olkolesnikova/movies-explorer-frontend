@@ -77,7 +77,7 @@ function Movies({ searchValue, setSearchValue, onSave, onDelete, isLoading, isSa
         }
         else {
             setErrorMessage('Ничего не найдено');
-            setMovies([]);
+            setMoviesForDisplay([]);
             setIsSearching(true);
         }
     }

@@ -71,7 +71,7 @@
 }
 
 .loginForm__button {
-    margin-top: 215px;
+    
     height: 45px;
     border-radius: 3px;
     background: #4285F4;
@@ -91,7 +91,7 @@
 }
 
 .loginForm__button_type_register {
-    margin-top: 145px;
+    margin-top: 0;
 }
 
 .loginForm__button_type_disabled {
@@ -108,4 +108,20 @@
         margin-top: 230px;
         margin-bottom: 14px;
     }
+}
+
+.loginForm__error{
+    margin: 0;
+    width: 100%;
+    max-width: 410px;
+    font-size: 10px;
+    font-weight: 500;
+    font-style: normal;
+    color: red;
+    height: 16px;
+    text-align: center;
+    display: block;
+    justify-self: end;
+    margin-bottom: 10px;
+    margin-top: 220px;
 }

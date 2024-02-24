@@ -2,7 +2,7 @@ import '../LoginForm/LoginForm.css';
 import { useFormWithValidation } from '../hooks/useForm';
 
 
-function RegisterForm({ onLogin }) {
+function RegisterForm({ onLogin, isServerError }) {
 
     const { values, handleChange, errors, isValid } = useFormWithValidation();
 
@@ -23,7 +23,7 @@ function RegisterForm({ onLogin }) {
             <div className='loginForm__input'>
                 <label htmlFor="loginForm-name" className='loginForm__input-title'>Имя</label>
                 <input id='loginForm-name' type="text" name="name" className='loginForm__input-value'
-                placeholder='Имя'
+                    placeholder='Имя'
                     minLength={2}
                     maxLength={30}
                     required
@@ -64,6 +64,7 @@ function RegisterForm({ onLogin }) {
                     {errors.password || ""}
                 </span>
             </div>
+            <p className='loginForm__error'>{isServerError}</p>
             <button type="submit"
                 className={isValid ? 'loginForm__button loginForm__button_type_register' : 'loginForm__button loginForm__button_type_register loginForm__button_type_disabled'}>Зарегистрироваться</button>
 

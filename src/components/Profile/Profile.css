@@ -130,8 +130,8 @@
     padding-bottom: 10px;
 }
 
-.profile__edit-link {
-    padding: 0;
+.profile__button-edit {
+	padding: 0;
     color: #FFF;
     text-align: center;
     font-size: 13px;
@@ -142,47 +142,43 @@
     margin-bottom: 16px;
     border: none;
     background-color: #202020;
-    
 }
 
-.profile__edit-link:hover {
+.profile__button-edit_disabled:disabled {
+	color: #8B8B8B;
+	pointer-events: none;
+}
+
+.profile__button-edit:hover {
     opacity: .7;
 }
 
-.profile__save-link {
-    width: 410px;
-    height: 45px;
-    border-radius: 3px;
-    background: #3456F3;
-    color: #FFF;
-    text-align: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    margin-bottom: 50px;
-    padding: 0;
-    border: none;
-    outline: 1px solid #3456F3;
-    cursor: pointer;
+.profile__button-save {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 17px;
+	border-radius: 3px;
+	background: #3456F3;
+	width: 100%;
+	min-height: 45px;
+	color: #fff;
+	text-align: center;
+	
+}
+
+.profile__button-save_disabled {
+	background: #F8F8F8;
+	color: #C2C2C2;
 }
 
 @media screen and (max-width: 568px) {
 
-    .profile__save-link {
+    .profile__button-save {
         width: 260px;
         
     }
 }
 
-.profile__save-link_type_disabled {
-    cursor: default;
-    border-radius: 6px;
-    background: #F8F8F8;
-    color: #000;
-    border: none;
-    outline: 1px solid #F8F8F8;
-}
 
 .profile__exit-link {
     

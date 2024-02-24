@@ -14,12 +14,12 @@ export const register = ({ name, email, password }) => {
 
     })
         .then((res) => {
-            return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
         })
-        .then((data) => {
-            return data;
-        })
-        .catch(console.error);
+        
 };
 
 export const authorize = ({ email, password }) => {
@@ -34,13 +34,12 @@ export const authorize = ({ email, password }) => {
             JSON.stringify({ email, password }),
             credentials: 'include'
     })
-        .then((res) => {
-            return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
-        })
-        .then((data) => {
-            return data;
-        })
-        .catch(console.error)
+    .then((res) => {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    })
 }
 
 export const getContent = (token) => {
