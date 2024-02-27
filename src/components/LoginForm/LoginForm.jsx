@@ -3,7 +3,7 @@ import { useFormWithValidation } from '../hooks/useForm';
 
 function LoginForm({ onLogin, isLoginError }) {
 
-    const { values, handleChange, errors, isValid } = useFormWithValidation();
+    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
     function handleSubmit(event) {
 
@@ -11,7 +11,8 @@ function LoginForm({ onLogin, isLoginError }) {
         onLogin({
             email: values.email,
             password: values.password
-        });
+        })
+        resetForm();
     }
 
     return (

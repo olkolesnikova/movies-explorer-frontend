@@ -4,7 +4,7 @@ import { useFormWithValidation } from '../hooks/useForm';
 
 function RegisterForm({ onLogin, isServerError }) {
 
-    const { values, handleChange, errors, isValid } = useFormWithValidation();
+    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
     function handleSubmit(event) {
 
@@ -13,8 +13,11 @@ function RegisterForm({ onLogin, isServerError }) {
             name: values.name,
             email: values.email,
             password: values.password
-        });
+        })
+        resetForm();
     }
+
+    console.log(isServerError)
 
     return (
 

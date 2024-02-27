@@ -1,6 +1,6 @@
 import '../../src/index.css';
 import Main from './Main/Main';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Header from './Header/Header';
 import Movies from './Movies/Movies';
@@ -20,7 +20,7 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useLocalStorage('loggedIn', 'false');
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('isLoggedIn') || false);
   const location = useLocation().pathname;
   const [currentUser, setCurrentUser] = useState({});
   const [inited, setInited] = useState(false);
@@ -39,7 +39,7 @@ function App() {
       mainApi.getUserInfo()
         .then((currentUser) => {
           console.log(currentUser);
-
+          localStorage.setItem('loggedIn', true);
           setCurrentUser({
             name: currentUser.name,
             email: currentUser.email,
@@ -49,6 +49,14 @@ function App() {
         .catch(console.error)
     }
   }, [loggedIn])
+
+  const resetErrorMessage = useCallback(() => {
+    setIsServerError('')
+  }, [])
+
+  useEffect(() => {
+    resetErrorMessage()
+  }, [resetErrorMessage, navigate]);
 
   function handleUpdateUser({ name, email }) {
 
@@ -102,19 +110,29 @@ function App() {
     return null;
   }
 
-  function handleRegister({ name, email, password }) {
+  function handleRegister({ name, email, password }) {   
 
-    auth.register({ name, email, password })
+    auth
+      .register({ name, email, password })
       .then((data) => {
         if (data) {
-          setIsServerError('Успешная регистрация')
           navigate('/signin');
-
         }
       })
       .catch((err) => {
-        setIsServerError(err)
-
+        if (err.message) {
+          err.message.includes('401') &&
+          setIsServerError('Failed to fetch');
+        }
+        if (err.includes('400')) {
+          setIsServerError('Введены некорректные данные');
+        }
+        else if (err.includes('409')) {
+          setIsServerError('Пользователь с таким email уже зарегистрирован');
+        }
+        else {
+          setIsServerError('500');
+        }
       })
   }
 
@@ -122,9 +140,9 @@ function App() {
 
     if (!email || !password) return;
 
-    auth.authorize({ email, password })
+    auth
+      .authorize({ email, password })
       .then((data) => {
-        console.log(data);
         if (data) {
           setCurrentUser({
             name: data.name,
@@ -132,12 +150,21 @@ function App() {
             id: data._id
           })
           setLoggedIn(true);
-          navigate('/');
+          navigate('/movies');
+
         }
       })
       .catch((err) => {
-        setIsLoginError(err)
-
+        if (err.message) {
+          err.message.includes('400') &&
+            setIsLoginError('Failed to fetch');
+        }
+        if (err.includes('401')) {
+          setIsLoginError('Введены некорректные данные');
+        }
+        else {
+          setIsLoginError('Что-то пошло не так! Пожалуйста повторите попытку позже');
+        }
       })
   }
 
@@ -149,6 +176,7 @@ function App() {
         setLoggedIn(false);
         navigate('/');
         setCurrentUser({});
+        setSavedMovies([]);
       })
       .catch(console.error)
   }

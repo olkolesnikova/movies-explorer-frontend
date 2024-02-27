@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function Profile({ onSignOut, onUpdate, errorOnUpdate, setErrorOnUpdate, isDisabledInput }) {
 
     const [isVisible, setIsVisible] = useState(false);
-    const { values, setValues, handleChange, errors, isValid } = useFormWithValidation();
+    const { values, setValues, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
     const currentUser = useContext(CurrentUserContext);
     const [isDisabled, setIsDisabled] = useState(false);
@@ -40,14 +40,10 @@ function Profile({ onSignOut, onUpdate, errorOnUpdate, setErrorOnUpdate, isDisab
             name: values.name,
             email: values.email
         })
+        resetForm();
     }
 
-    /* function handleClick() {
-        setErrorOnUpdate('')
-        setIsInputDisabled(false);
-
-    } */
-
+    
     return (
         <main>
             <section className='profile'>

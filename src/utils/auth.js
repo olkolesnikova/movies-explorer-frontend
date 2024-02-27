@@ -1,5 +1,12 @@
 export const url = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_URL : 'http://localhost:3000';
 
+const checkResponse = (res) => {
+	if (res.ok) {
+		return res.json();
+	}
+	return Promise.reject(`Код ошибки: ${res.status}`);
+}
+
 export const register = ({ name, email, password }) => {
 
     return fetch(`${url}/signup`, {
@@ -13,12 +20,7 @@ export const register = ({ name, email, password }) => {
             credentials: 'include'
 
     })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        })
+    .then((res) => checkResponse(res));
         
 };
 
@@ -34,12 +36,7 @@ export const authorize = ({ email, password }) => {
             JSON.stringify({ email, password }),
             credentials: 'include'
     })
-    .then((res) => {
-        if (res.ok) {
-            return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then((res) => checkResponse(res));
 }
 
 export const getContent = (token) => {
