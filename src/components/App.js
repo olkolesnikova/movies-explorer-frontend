@@ -110,7 +110,8 @@ function App() {
     return null;
   }
 
-  function handleRegister({ name, email, password }) {   
+  function handleRegister({ name, email, password }) {
+
 
     auth
       .register({ name, email, password })
@@ -122,7 +123,7 @@ function App() {
       .catch((err) => {
         if (err.message) {
           err.message.includes('401') &&
-          setIsServerError('Failed to fetch');
+            setIsServerError('Failed to fetch');
         }
         if (err.includes('400')) {
           setIsServerError('Введены некорректные данные');
@@ -220,7 +221,8 @@ function App() {
           <Route path='/signup' element={<Register onLogin={handleRegister} isServerError={isServerError} />} />
 
           <Route path='/' element={<Main onSignOut={handleSignOut} />} />
-          <Route path='/movies' element={
+
+          {/* <Route path='/movies' element={
             <ProtectedRoute loggedIn={loggedIn}>
               <Movies
                 searchValue={searchValue}
@@ -231,8 +233,23 @@ function App() {
 
               />
             </ProtectedRoute>
-          } />
-          <Route path='/saved-movies' element={
+          } /> */}
+
+          <Route
+            path="/movies"
+            element={
+              <ProtectedRoute
+                element={Movies}
+                loggedIn={loggedIn}
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                onSave={saveMovie}
+                onDelete={deleteMovie}
+                isLoading={isLoading}
+              />}
+          />
+
+          {/* <Route path='/saved-movies' element={
             <ProtectedRoute loggedIn={loggedIn}>
               <SavedMovies
                 savedMovies={savedMovies}
@@ -246,9 +263,25 @@ function App() {
             </ProtectedRoute>
           }>
 
-          </Route>
+          </Route> */}
 
-          <Route path='/profile' element={
+          <Route
+            path="/saved-movies"
+            element={
+              <ProtectedRoute
+                element={SavedMovies}
+                loggedIn={loggedIn}
+                savedMovies={savedMovies}
+                setSavedMovies={setSavedMovies}
+                onSave={saveMovie}
+                onDelete={deleteMovie}
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                isLoading={isLoading}
+              />}
+          />
+
+          {/* <Route path='/profile' element={
             <ProtectedRoute loggedIn={loggedIn}>
               <Profile
                 onSignOut={handleSignOut}
@@ -260,7 +293,23 @@ function App() {
             </ProtectedRoute>
           }>
 
-          </Route>
+          </Route> */}
+
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute
+                element={Profile}
+                loggedIn={loggedIn}
+                onSignOut={handleSignOut}
+                onUpdate={handleUpdateUser}
+                errorOnUpdate={errorOnUpdate}
+                setErrorOnUpdate={setErrorOnUpdate}
+                isDisabledInput={isDisabledInput}
+              />}
+          />
+
+
 
           <Route path='*' element={<PageNotFound />} />
         </Routes>

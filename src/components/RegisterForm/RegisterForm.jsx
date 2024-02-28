@@ -6,6 +6,7 @@ function RegisterForm({ onLogin, isServerError }) {
 
     const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
+
     function handleSubmit(event) {
 
         event.preventDefault();
