@@ -45,7 +45,8 @@ function Movies({ searchValue, setSearchValue, onSave, onDelete, isLoading }) {
 
                 return index < moviesRenderParams.all;
             });
-            setMoviesForDisplay(found);
+            console.log(found);
+            setMoviesForDisplay(foundMovies);
 
         }
     }, []);
