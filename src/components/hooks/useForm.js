@@ -15,9 +15,17 @@ const handleChange = (event) => {
     setValues({...values, [name]: value});
     setErrors({...errors, [name]: input.validationMessage });
     setIsValid(input.closest("form").checkValidity());
+
+    
     
 }
 
-return {values, handleChange, errors, isValid};
+const resetForm = () => {
+    setValues({});
+    setErrors({});
+    setIsValid(false);
+}
+
+return {values, setValues, handleChange, errors, isValid, resetForm};
 
 }

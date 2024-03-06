@@ -4,12 +4,12 @@ import Techs from "../Techs/Techs";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Portfolio";
 
-function Main() {
+function Main({ onSignOut }) {
 
     return (
         <>
             <main>
-                <Promo />
+                <Promo onSignOut={onSignOut}/>
                 <AboutProject />
                 <Techs />
                 <AboutMe />

@@ -1,14 +1,21 @@
 import './FilterCheckbox.css';
+import { useState } from 'react';
 
-function FilterCheckbox() {
+function FilterCheckbox({ isFilterChecked, setIsFilterChecked }) {
+
+    
 
     return (
         <div className='checkbox'>
             <div class="checkbox__switch">
-                <input type="checkbox" name="switch" class="checkbox__switch-checkbox" id="switch" checked/>
-                <label class="checkbox__switch-label" for="switch">
-                    <span class="checkbox__switch-inner"></span>
-                    <span class="checkbox__switch-switch"></span>
+                <input type="checkbox" name="switch" className="checkbox__switch-checkbox" id="switch" сhecked={isFilterChecked}
+                
+                onClick={() => {setIsFilterChecked(!isFilterChecked)
+                console.log(isFilterChecked)}}
+                />
+                <label className="checkbox__switch-label" for="switch">
+                    <span className='checkbox__switch-inner'></span>
+                    <span className="checkbox__switch-switch"></span>
                 </label>
             </div>
 

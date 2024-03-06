@@ -5,7 +5,7 @@ import './../Login/Login.css';
 import { useFormWithValidation } from "../hooks/useForm";
 
 
-function Register() {
+function Register({ onLogin, isRegisterError }) {
 
     const { isValid } = useFormWithValidation();
 
@@ -17,7 +17,7 @@ function Register() {
                 </Link>
             </div>
             <h1 className="login__title">Добро пожаловать!</h1>
-            <RegisterForm isDisabled={!isValid}></RegisterForm>
+            <RegisterForm onLogin={onLogin} isServerError={isRegisterError}></RegisterForm>
             <p className="login__link-bottom">Уже зарегистрированы? <Link to="/signin" className="login__link-register">Войти</Link></p>
         </main>
     )
