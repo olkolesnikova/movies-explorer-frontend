@@ -2,6 +2,9 @@ import './AddFilmsButton.css';
 
 function AddFilmsButton({ movies, moviesForDisplay, onClick }) {
 
+    console.log(movies);
+    console.log(moviesForDisplay);
+
     return (
         <section className='addFilmsButton'>
            

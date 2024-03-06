@@ -2,7 +2,7 @@ import '../LoginForm/LoginForm.css';
 import { useFormWithValidation } from '../hooks/useForm';
 
 
-function RegisterForm({ onLogin, isServerError }) {
+function RegisterForm({ onLogin, isRegisterError }) {
 
     const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
@@ -17,8 +17,6 @@ function RegisterForm({ onLogin, isServerError }) {
         })
         resetForm();
     }
-
-    console.log(isServerError)
 
     return (
 
@@ -46,6 +44,7 @@ function RegisterForm({ onLogin, isServerError }) {
                     minLength={2}
                     maxLength={30}
                     required
+                    pattern="^[a-zA-Z0-9_.+\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-.]+$"
                     value={values.email || ""}
                     onChange={handleChange}
                 />
@@ -68,7 +67,7 @@ function RegisterForm({ onLogin, isServerError }) {
                     {errors.password || ""}
                 </span>
             </div>
-            <p className='loginForm__error'>{isServerError}</p>
+            <p className='loginForm__error'>{isRegisterError}</p>
             <button type="submit"
                 className={isValid ? 'loginForm__button loginForm__button_type_register' : 'loginForm__button loginForm__button_type_register loginForm__button_type_disabled'}>Зарегистрироваться</button>
 

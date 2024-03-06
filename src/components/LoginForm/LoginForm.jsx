@@ -25,6 +25,7 @@ function LoginForm({ onLogin, isLoginError }) {
                     minLength={2}
                     maxLength={30}
                     required
+                    pattern="^[a-zA-Z0-9_.+\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-.]+$"
                     value={values.email || ""}
                     onChange={handleChange}
                 />

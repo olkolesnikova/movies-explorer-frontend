@@ -25,7 +25,7 @@ class MainApi {
             headers: this.headers,
             body: JSON.stringify({
                 name: name,
-			email: email,
+                email: email,
             }),
             credentials: 'include'
         })
@@ -73,6 +73,13 @@ class MainApi {
             headers: this.headers,
             credentials: 'include',
             body: JSON.stringify({ id })
+        })
+    }
+
+    getSavedMovies() {
+
+        return this.request(`${this.url}/movies`, {
+            method: 'GET'
         })
     }
 

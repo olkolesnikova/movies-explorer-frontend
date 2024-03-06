@@ -56,6 +56,7 @@ function Profile({ onSignOut, onUpdate, errorOnUpdate, setErrorOnUpdate, isDisab
                             minLength={2}
                             maxLength={30}
                             required
+                            pattern="^[A-Za-zА-Яа-яЁё\-\s]+$"
                             value={values.name || ''}
                             onChange={handleChange}
                             disabled={(isVisible ? false : true) || isDisabledInput} />
@@ -71,6 +72,7 @@ function Profile({ onSignOut, onUpdate, errorOnUpdate, setErrorOnUpdate, isDisab
                             minLength={2}
                             maxLength={30}
                             required
+                            pattern="^[a-zA-Z0-9_.+\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-.]+$"
                             value={values.email || ''}
                             onChange={handleChange}
                             disabled={(isVisible ? false : true) || isDisabledInput} />

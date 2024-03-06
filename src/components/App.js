@@ -1,7 +1,7 @@
 import '../../src/index.css';
 import Main from './Main/Main';
 import { useState, useEffect, useCallback } from 'react';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import Header from './Header/Header';
 import Movies from './Movies/Movies';
 import SavedMovies from './SavedMovies/SavedMovies';
@@ -20,7 +20,7 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('isLoggedIn') || false);
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn') || false);
   const location = useLocation().pathname;
   const [currentUser, setCurrentUser] = useState({});
   const [inited, setInited] = useState(false);
@@ -30,33 +30,41 @@ function App() {
   const [searchValue, setSearchValue] = useLocalStorage('searchValue', '');
   const [errorOnUpdate, setErrorOnUpdate] = useState('');
   const [isDisabledInput, setIsDisabledInput] = useState(false);
-  const [isServerError, setIsServerError] = useState('');
+  const [isRegisterError, setIsRegisterError] = useState('');
   const [isLoginError, setIsLoginError] = useState('')
 
   useEffect(() => {
 
-    if (loggedIn) {
-      mainApi.getUserInfo()
-        .then((currentUser) => {
-          console.log(currentUser);
-          localStorage.setItem('loggedIn', true);
-          setCurrentUser({
-            name: currentUser.name,
-            email: currentUser.email,
-            id: currentUser._id,
-          })
+
+    mainApi.getUserInfo()
+      .then((currentUser) => {
+        console.log(currentUser);
+        localStorage.setItem('loggedIn', true);
+        setCurrentUser({
+          name: currentUser.name,
+          email: currentUser.email,
+          id: currentUser._id,
         })
-        .catch(console.error)
-    }
+      })
+      .catch(console.error)
+
   }, [loggedIn])
 
-  const resetErrorMessage = useCallback(() => {
-    setIsServerError('')
+  const resetLoginMessage = useCallback(() => {
+    setIsLoginError('')
   }, [])
 
   useEffect(() => {
-    resetErrorMessage()
-  }, [resetErrorMessage, navigate]);
+    resetLoginMessage()
+  }, [resetLoginMessage, navigate]);
+
+  const resetRegisterMessage = useCallback(() => {
+    setIsRegisterError('')
+  }, [])
+
+  useEffect(() => {
+    resetRegisterMessage()
+  }, [resetRegisterMessage, navigate]);
 
   function handleUpdateUser({ name, email }) {
 
@@ -112,27 +120,26 @@ function App() {
 
   function handleRegister({ name, email, password }) {
 
-
     auth
       .register({ name, email, password })
       .then((data) => {
         if (data) {
-          navigate('/signin');
+          handleLogin({ email, password })
         }
       })
       .catch((err) => {
         if (err.message) {
           err.message.includes('401') &&
-            setIsServerError('Failed to fetch');
+            setIsRegisterError('Failed to fetch');
         }
         if (err.includes('400')) {
-          setIsServerError('Введены некорректные данные');
+          setIsRegisterError('Введены некорректные данные');
         }
         else if (err.includes('409')) {
-          setIsServerError('Пользователь с таким email уже зарегистрирован');
+          setIsRegisterError('Пользователь с таким email уже зарегистрирован');
         }
         else {
-          setIsServerError('500');
+          setIsRegisterError('500');
         }
       })
   }
@@ -151,6 +158,7 @@ function App() {
             id: data._id
           })
           setLoggedIn(true);
+          //localStorage.setItem('loggedIn', true);
           navigate('/movies');
 
         }
@@ -218,11 +226,12 @@ function App() {
         <Routes>
 
           <Route path='/signin' element={<Login onLogin={handleLogin} isLoginError={isLoginError} />} />
-          <Route path='/signup' element={<Register onLogin={handleRegister} isServerError={isServerError} />} />
+          <Route path='/signup' element={<Register onLogin={handleRegister} isRegisterError={isRegisterError} />} />
 
           <Route path='/' element={<Main onSignOut={handleSignOut} />} />
 
-          {/* <Route path='/movies' element={
+
+          <Route path='/movies' element={
             <ProtectedRoute loggedIn={loggedIn}>
               <Movies
                 searchValue={searchValue}
@@ -233,23 +242,10 @@ function App() {
 
               />
             </ProtectedRoute>
-          } /> */}
+          } />
 
-          <Route
-            path="/movies"
-            element={
-              <ProtectedRoute
-                element={Movies}
-                loggedIn={loggedIn}
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-                onSave={saveMovie}
-                onDelete={deleteMovie}
-                isLoading={isLoading}
-              />}
-          />
 
-          {/* <Route path='/saved-movies' element={
+          <Route path='/saved-movies' element={
             <ProtectedRoute loggedIn={loggedIn}>
               <SavedMovies
                 savedMovies={savedMovies}
@@ -263,25 +259,10 @@ function App() {
             </ProtectedRoute>
           }>
 
-          </Route> */}
+          </Route>
 
-          <Route
-            path="/saved-movies"
-            element={
-              <ProtectedRoute
-                element={SavedMovies}
-                loggedIn={loggedIn}
-                savedMovies={savedMovies}
-                setSavedMovies={setSavedMovies}
-                onSave={saveMovie}
-                onDelete={deleteMovie}
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-                isLoading={isLoading}
-              />}
-          />
 
-          {/* <Route path='/profile' element={
+          <Route path='/profile' element={
             <ProtectedRoute loggedIn={loggedIn}>
               <Profile
                 onSignOut={handleSignOut}
@@ -293,23 +274,7 @@ function App() {
             </ProtectedRoute>
           }>
 
-          </Route> */}
-
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute
-                element={Profile}
-                loggedIn={loggedIn}
-                onSignOut={handleSignOut}
-                onUpdate={handleUpdateUser}
-                errorOnUpdate={errorOnUpdate}
-                setErrorOnUpdate={setErrorOnUpdate}
-                isDisabledInput={isDisabledInput}
-              />}
-          />
-
-
+          </Route>
 
           <Route path='*' element={<PageNotFound />} />
         </Routes>
